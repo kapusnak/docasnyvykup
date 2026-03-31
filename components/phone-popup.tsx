@@ -88,17 +88,17 @@ export function PhonePopup() {
         onClick={dismiss}
       />
 
-      <div className="fixed bottom-0 left-0 right-0 z-50 max-h-[40vh] w-full animate-slide-in-bottom rounded-t-2xl bg-[#f1b24a] p-4 pb-6 shadow-2xl lg:bottom-6 lg:left-auto lg:right-6 lg:max-h-none lg:w-[380px] lg:rounded-2xl lg:p-6 relative">
-        <button
-          type="button"
-          onClick={dismiss}
-          className="absolute right-2 top-2 z-10 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[var(--color-foreground)]/55 transition-colors hover:bg-black/10 hover:text-[var(--color-foreground)]"
-          aria-label="Zavřít"
-        >
-          <X className="pointer-events-none h-5 w-5 shrink-0" strokeWidth={2} aria-hidden />
-        </button>
-
+      <div className="fixed bottom-0 left-0 right-0 z-50 max-h-[40vh] w-full animate-slide-in-bottom rounded-t-2xl bg-[#f1b24a] p-4 pb-6 shadow-2xl lg:bottom-6 lg:left-auto lg:right-6 lg:max-h-none lg:w-[380px] lg:rounded-2xl lg:p-6">
         <div className={shake ? "animate-shake" : ""}>
+          <button
+            type="button"
+            onClick={dismiss}
+            className="absolute right-3 top-3 z-10 inline-flex min-h-10 min-w-10 items-center justify-center rounded-full p-2 text-[var(--color-foreground)]/55 transition-colors hover:bg-black/10 hover:text-[var(--color-foreground)]"
+            aria-label="Zavřít"
+          >
+            <X className="h-5 w-5 shrink-0 pointer-events-none" strokeWidth={2} aria-hidden />
+          </button>
+
           <h3 className="pr-10 text-lg font-bold leading-snug text-[var(--color-foreground)] lg:text-2xl">
             Potřebujete poradit?
           </h3>
