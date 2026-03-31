@@ -73,10 +73,10 @@ export function WhatsAppQrOpenButton({ buttonClassName, iconClassName }: Props) 
               ref={closeRef}
               type="button"
               onClick={() => setOpen(false)}
-              className="absolute right-3 top-3 z-10 rounded-full bg-white/20 p-2 text-white transition hover:bg-white/30"
+              className="absolute right-2 top-2 z-10 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/30"
               aria-label="Zavřít"
             >
-              <X className="h-5 w-5" strokeWidth={2} aria-hidden />
+              <X className="pointer-events-none h-5 w-5 shrink-0" strokeWidth={2} aria-hidden />
             </button>
             <h2 id={titleId} className="sr-only">
               WhatsApp — docasnyvykup.cz

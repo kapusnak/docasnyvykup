@@ -1,5 +1,6 @@
+import Image from "next/image"
 import Link from "next/link"
-import { Facebook, Instagram, ThumbsUp } from "lucide-react"
+import { Facebook, Instagram } from "lucide-react"
 
 import { Container } from "@/components/container"
 import { WhatsAppQrOpenButton } from "@/components/whatsapp-qr-modal"
@@ -146,15 +147,21 @@ export function Footer() {
           {/* Partner — na desktopu zarovnání jako ostatní sloupce */}
           <div className="flex min-w-0 flex-col gap-2 border-t border-white/10 pt-6 lg:border-t-0 lg:pt-[2.65rem]">
             <p className={`text-sm leading-normal ${muted}`}>Naším hlavním partnerem je:</p>
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3 lg:flex-col lg:items-start">
+            <a
+              href="https://vymahanidluzniku.cz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex w-fit flex-col gap-2 rounded-md outline-offset-4 transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#164A41] sm:flex-row sm:items-center sm:gap-3 lg:flex-col lg:items-start"
+              aria-label="Inkasní kancelář — inkaso a správa pohledávek (vymahanidluzniku.cz)"
+            >
               <InkasniMark />
               <div className="min-w-0">
-                <p className="font-[family-name:var(--font-cardo)] text-base font-bold uppercase tracking-wide text-white">
+                <p className="font-[family-name:var(--font-cardo)] text-base font-bold uppercase tracking-wide text-white underline-offset-2 transition group-hover:underline">
                   Inkasní kancelář
                 </p>
                 <p className={`text-xs leading-snug ${muted}`}>inkaso a správa pohledávek</p>
               </div>
-            </div>
+            </a>
             <p className="max-w-sm font-[family-name:var(--font-cardo)] text-sm italic leading-snug text-white/90">
               Již 25 let pomáháme získat, co Vám náleží.
             </p>
@@ -164,12 +171,17 @@ export function Footer() {
               rel="noopener noreferrer"
               className="mt-1 inline-flex w-fit flex-col gap-1 rounded-xl border border-white/15 bg-white/10 px-3 py-2.5 text-left shadow-sm backdrop-blur-sm transition hover:bg-white/[0.14]"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-white/15 text-white">
-                <ThumbsUp className="h-4 w-4" strokeWidth={2} aria-hidden />
-              </span>
+              <Image
+                src="/zivefirmy-spolehliva-firma-badge.png"
+                alt=""
+                width={125}
+                height={125}
+                className="h-16 w-16 shrink-0 object-contain"
+                aria-hidden
+              />
               <span className={`text-[10px] font-medium uppercase tracking-wide ${muted}`}>zivefirmy.cz</span>
               <span className="text-[11px] font-semibold uppercase text-white/95">Spolehlivá firma</span>
-              <span className={`text-[10px] ${muted}`}>2024</span>
+              <span className={`text-[10px] ${muted}`}>2026</span>
             </a>
           </div>
         </div>

@@ -9,6 +9,8 @@ import { Header } from "@/components/header"
 import { HeroServiceSwitch } from "@/components/hero-service-switch"
 import { LeadForm } from "@/components/lead-form"
 import { PhonePopup } from "@/components/phone-popup"
+import { FormularInlineLink } from "@/components/formular-inline-link"
+import { ZavolejteTelLink } from "@/components/zavolejte-tel-link"
 
 const img = {
   hero: "/media/2025/03/refargotohp-UHHFYUTz_n0-unsplash-scaled.jpg",
@@ -25,7 +27,7 @@ export default function HomePage() {
       <main>
         {/* Hero — texty z f5f5_posts ID 10 */}
         <section
-          className="relative flex min-h-[min(100svh,880px)] items-center justify-center bg-[var(--color-surface-muted)] pt-[4.5rem] md:pt-20"
+          className="relative flex min-h-[min(72svh,560px)] items-center justify-center bg-[var(--color-surface-muted)] pt-[4.5rem] md:min-h-[min(88svh,880px)] md:pt-20"
           aria-label="Úvod"
         >
           <div className="absolute inset-0">
@@ -37,11 +39,14 @@ export default function HomePage() {
               sizes="100vw"
               className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/50" aria-hidden />
+            <div
+              className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/60"
+              aria-hidden
+            />
           </div>
-          <Container className="relative z-10 py-12 md:py-20">
+          <Container className="relative z-10 py-8 md:py-12 lg:py-20">
             <div className="mx-auto max-w-2xl text-center text-white">
-              <h1 className="font-[family-name:var(--font-cardo)] text-3xl font-semibold leading-[52px] tracking-[-0.8px] sm:text-4xl md:text-[2.75rem]">
+              <h1 className="font-[family-name:var(--font-cardo)] text-3xl font-semibold leading-tight tracking-[-0.8px] sm:text-4xl md:text-[2.75rem] md:leading-snug">
                 Získejte finanční prostředky
                 <br />
                 a nadále užívejte svou nemovitost nebo vůz
@@ -55,21 +60,21 @@ export default function HomePage() {
         </section>
 
         {/* Nemovitosti: úvod, o službě, jak funguje — jedna krémová sekce #nemovitosti; #jak-nemovitosti uvnitř */}
-        <section id="nemovitosti" className="bg-[var(--color-surface-cream)] py-14 lg:py-20">
+        <section id="nemovitosti" className="bg-[var(--color-surface-cream)] py-10 md:py-14 lg:py-20">
           <Container>
-            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            <div className="grid items-center gap-8 md:gap-10 lg:grid-cols-2 lg:gap-14">
               <div className="order-2 overflow-hidden rounded-2xl shadow-lg lg:order-1">
                 <Image
                   src={img.nemExt}
                   alt="Nemovitost"
                   width={1200}
                   height={800}
-                  className="h-auto w-full object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="h-48 w-full object-cover sm:h-auto sm:min-h-0"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
                 />
               </div>
               <div className="order-1 space-y-5 lg:order-2">
-                <h2 className="font-[family-name:var(--font-cardo)] text-3xl font-semibold leading-tight text-[var(--color-foreground)] md:text-4xl">
+                <h2 className="font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight text-[var(--color-foreground)] md:text-3xl lg:text-4xl">
                   Dočasný výkup nemovitostí
                 </h2>
                 <p className="text-lg font-medium leading-snug text-[var(--color-foreground)] md:text-xl">
@@ -81,7 +86,7 @@ export default function HomePage() {
                   Rychlé a diskrétní řešení finančních potíží formou zpětného leasingu.
                 </p>
                 <Link
-                  href="/#formular"
+                  href="/?mode=nemovitosti#formular"
                   className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[var(--color-cta)] px-8 text-sm font-bold uppercase tracking-wide text-[var(--color-foreground)] transition hover:bg-[var(--color-cta-hover)]"
                 >
                   Nezávazná konzultace zdarma
@@ -154,7 +159,7 @@ export default function HomePage() {
                       alt="Konzultace a postup"
                       width={683}
                       height={1024}
-                      className="aspect-[4/5] w-full max-h-[min(22rem,48vh)] object-cover object-center lg:aspect-auto lg:max-h-[min(26rem,50vh)]"
+                      className="aspect-[4/5] w-full max-h-[min(14rem,32vh)] object-cover object-center md:max-h-[min(18rem,40vh)] lg:aspect-auto lg:max-h-[min(26rem,50vh)]"
                       sizes="(max-width: 1023px) 100vw, 300px"
                     />
                   </div>
@@ -168,7 +173,10 @@ export default function HomePage() {
                       <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)]">
                         1. Nezávazná konzultace
                       </h3>
-                      <p className="mt-1.5 text-body-muted">Zavolejte nám nebo využijte náš formulář</p>
+                      <p className="mt-1.5 text-body-muted">
+                        <ZavolejteTelLink>Zavolejte</ZavolejteTelLink> nám nebo využijte náš{" "}
+                        <FormularInlineLink>formulář</FormularInlineLink>
+                      </p>
                     </div>
                     <div>
                       <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)]">
@@ -194,13 +202,13 @@ export default function HomePage() {
         {/* Vozidla: tmavá značková zeleň + světlý text; bílé karty pro hustý text; #informace, #jak-vozidla uvnitř */}
         <section
           id="vozidla"
-          className="bg-[rgba(52,86,82,1)] py-14 text-[#f5f2eb] lg:py-20 [--color-foreground:#faf8f5] [--color-muted:#ddd8cf]"
+          className="bg-[rgba(15,56,50,1)] py-10 text-[#f5f2eb] md:py-14 lg:py-20 [--color-foreground:#faf8f5] [--color-muted:#ddd8cf]"
           style={{ colorScheme: "dark" }}
         >
           <Container>
-            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            <div className="grid items-center gap-8 md:gap-10 lg:grid-cols-2 lg:gap-14">
               <div className="space-y-5">
-                <h2 className="font-[family-name:var(--font-cardo)] text-3xl font-semibold leading-tight text-white md:text-4xl">
+                <h2 className="font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight text-white md:text-3xl lg:text-4xl">
                   Dočasný výkup vozidel
                 </h2>
                 <p className="text-lg font-medium leading-snug text-white/95 md:text-xl">
@@ -212,7 +220,7 @@ export default function HomePage() {
                   Financování je poskytováno pro osobní, užitková a nákladní vozidla, obytné vozy, motocykly a veterány.
                 </p>
                 <Link
-                  href="/#formular"
+                  href="/?mode=vozidlo#formular"
                   className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[var(--color-cta)] px-8 text-sm font-bold uppercase tracking-wide text-[#111111] transition hover:bg-[var(--color-cta-hover)]"
                 >
                   Vyplnit žádost
@@ -224,14 +232,14 @@ export default function HomePage() {
                   alt="Vozidlo"
                   width={1200}
                   height={800}
-                  className="h-auto w-full object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="h-48 w-full object-cover sm:h-auto sm:min-h-0"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
                 />
               </div>
             </div>
 
             <div id="informace" className="mt-8 border-t border-white/20 pt-8 lg:mt-10 lg:pt-10">
-            <h2 className="font-[family-name:var(--font-cardo)] text-3xl font-semibold leading-tight text-[var(--color-foreground)] md:text-4xl md:leading-tight">
+            <h2 className="font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight text-[var(--color-foreground)] md:text-3xl md:leading-tight lg:text-4xl">
               Co je to dočasný výkup vozidel?
             </h2>
             <p className="mt-5 max-w-4xl text-body-foreground">
@@ -241,7 +249,7 @@ export default function HomePage() {
               </strong>
             </p>
 
-            <ul className="mt-10 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-8 grid list-none gap-4 sm:mt-10 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
                   title: "Až 90 % z hodnoty vozu",
@@ -322,7 +330,8 @@ export default function HomePage() {
                       title: "Kontaktujte nás",
                       body: (
                         <>
-                          Vyplňte online formulář nebo nám zavolejte.
+                          Vyplňte online <FormularInlineLink variant="dark">formulář</FormularInlineLink> nebo nám{" "}
+                          <ZavolejteTelLink variant="dark">zavolejte</ZavolejteTelLink>.
                         </>
                       ),
                     },
@@ -361,14 +370,14 @@ export default function HomePage() {
                   ))}
                 </ol>
               </div>
-              <div className="mx-auto shrink-0 lg:mx-0 lg:w-[min(100%,280px)] xl:w-[min(100%,320px)]">
-                <div className="overflow-hidden rounded-2xl shadow-lg">
+              <div className="w-full min-w-0 shrink-0 lg:mx-0 lg:w-[min(100%,280px)] xl:w-[min(100%,320px)]">
+                <div className="w-full overflow-hidden rounded-2xl shadow-lg">
                   <Image
                     src={img.interior}
-                    alt="Interiér domu"
+                    alt="Interiér vozidla"
                     width={683}
                     height={1024}
-                    className="aspect-[4/5] w-full max-h-[min(22rem,48vh)] object-cover object-center lg:aspect-auto lg:max-h-[min(26rem,50vh)]"
+                    className="aspect-video w-full object-cover object-top lg:aspect-auto lg:max-h-[min(26rem,50vh)] lg:object-center"
                     sizes="(max-width: 1023px) 100vw, 300px"
                   />
                 </div>
@@ -379,9 +388,9 @@ export default function HomePage() {
         </section>
 
         {/* Poptávka */}
-        <section id="formular" className="bg-[var(--color-surface-muted)] py-14 lg:py-20">
+        <section id="formular" className="bg-[var(--color-surface-muted)] py-10 md:py-14 lg:py-20">
           <Container>
-            <div className="mx-auto max-w-3xl rounded-2xl border border-black/5 bg-white px-6 py-10 md:px-12 md:py-14">
+            <div className="mx-auto max-w-4xl rounded-2xl border border-black/5 bg-white px-6 py-8 md:px-12 md:py-14">
               <h2 className="text-center font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight text-[var(--color-foreground)] md:text-3xl">
                 Nezávazná poptávka
               </h2>

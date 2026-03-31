@@ -16,7 +16,7 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-black/5 bg-[var(--color-background)]/95 backdrop-blur-md">
-      <div className="mx-auto flex max-w-[72rem] items-center justify-between gap-4 px-6 py-3 sm:px-10 lg:px-16 xl:px-20 2xl:px-24">
+      <div className="mx-auto flex max-w-[72rem] items-center justify-between gap-4 px-4 py-3 sm:px-10 lg:px-16 xl:px-20 2xl:px-24">
         <Link href="/" className="flex min-h-[44px] items-center gap-3">
           <Image
             src="/cropped-docasnyvykup-logo-circled.png"
@@ -62,7 +62,7 @@ export function Header() {
 
       {open && (
         <div className="border-t border-black/5 bg-[var(--color-background)] md:hidden">
-          <nav className="mx-auto flex max-w-[72rem] flex-col gap-1 px-6 py-3 sm:px-10 lg:px-16 xl:px-20 2xl:px-24" aria-label="Mobilní navigace">
+          <nav className="mx-auto flex max-w-[72rem] flex-col gap-1 px-4 py-3 sm:px-10 lg:px-16 xl:px-20 2xl:px-24" aria-label="Mobilní navigace">
             {nav.map((item) => (
               <Link
                 key={item.href}
