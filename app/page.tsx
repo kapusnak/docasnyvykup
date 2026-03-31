@@ -54,7 +54,7 @@ export default function HomePage() {
           </Container>
         </section>
 
-        {/* Dočasný výkup nemovitostí + o službě (jedna sekce, krémové pozadí) */}
+        {/* Nemovitosti: úvod, o službě, jak funguje — jedna krémová sekce #nemovitosti; #jak-nemovitosti uvnitř */}
         <section id="nemovitosti" className="bg-[var(--color-surface-cream)] py-14 lg:py-20">
           <Container>
             <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
@@ -89,7 +89,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="min-w-0 space-y-5 pt-4 lg:space-y-4 lg:pt-6">
+            <div className="min-w-0 space-y-5 border-t border-black/[0.08] pt-8 lg:space-y-4 lg:pt-10 mt-8 lg:mt-10">
               <div className="space-y-3 lg:space-y-2.5">
                 <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)] md:text-xl">
                   Co je to dočasný výkup (zpětný leasing)?
@@ -140,49 +140,50 @@ export default function HomePage() {
                 </ul>
               </div>
             </div>
-          </Container>
-        </section>
 
-        {/* Jak funguje — nemovitosti */}
-        <section id="jak-nemovitosti" className="bg-[var(--color-primary)] py-14 text-white lg:py-20">
-          <Container>
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12 xl:gap-14">
-              <div className="order-2 shrink-0 lg:order-1 lg:w-[min(100%,280px)] xl:w-[min(100%,320px)]">
-                <div className="overflow-hidden rounded-2xl shadow-lg">
-                  <Image
-                    src={img.nemSteps}
-                    alt="Konzultace a postup"
-                    width={683}
-                    height={1024}
-                    className="aspect-[4/5] w-full max-h-[min(22rem,48vh)] object-cover object-center lg:aspect-auto lg:max-h-[min(26rem,50vh)]"
-                    sizes="(max-width: 1023px) 100vw, 300px"
-                  />
+            {/* Jak funguje — součást #nemovitosti, kotva #jak-nemovitosti */}
+            <div
+              id="jak-nemovitosti"
+              className="mt-8 border-t border-black/[0.08] pt-8 lg:mt-10 lg:pt-10"
+            >
+              <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12 xl:gap-14">
+                <div className="order-2 shrink-0 lg:order-1 lg:w-[min(100%,280px)] xl:w-[min(100%,320px)]">
+                  <div className="overflow-hidden rounded-2xl shadow-lg">
+                    <Image
+                      src={img.nemSteps}
+                      alt="Konzultace a postup"
+                      width={683}
+                      height={1024}
+                      className="aspect-[4/5] w-full max-h-[min(22rem,48vh)] object-cover object-center lg:aspect-auto lg:max-h-[min(26rem,50vh)]"
+                      sizes="(max-width: 1023px) 100vw, 300px"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="order-1 min-w-0 flex-1 space-y-5 lg:order-2 lg:space-y-4 lg:pt-0">
-                <h2 className="text-center font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight md:text-3xl lg:text-left">
-                  Jak funguje dočasný výkup nemovitostí?
-                </h2>
-                <div className="space-y-5 lg:space-y-4">
-                  <div>
-                    <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug">
-                      1. Nezávazná konzultace
-                    </h3>
-                    <p className="mt-1.5 text-body-inverse">Zavolejte nám nebo využijte náš formulář</p>
-                  </div>
-                  <div>
-                    <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug">
-                      2. Návrh řešení a podmínek
-                    </h3>
-                    <p className="mt-1.5 text-body-inverse">
-                      Společně vybereme, zda je pro vás nejvýhodnější zpětný leasing, zástava nemovitosti nebo přímý výkup.
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug">
-                      3. Okamžité vyplacení peněz
-                    </h3>
-                    <p className="mt-1.5 text-body-inverse">Vše vyřídíme rychle, obvykle do několika dní.</p>
+                <div className="order-1 min-w-0 flex-1 space-y-5 lg:order-2 lg:space-y-4 lg:pt-0">
+                  <h2 className="text-center font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight text-[var(--color-foreground)] md:text-3xl lg:text-left">
+                    Jak funguje dočasný výkup nemovitostí?
+                  </h2>
+                  <div className="space-y-5 lg:space-y-4">
+                    <div>
+                      <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)]">
+                        1. Nezávazná konzultace
+                      </h3>
+                      <p className="mt-1.5 text-body-muted">Zavolejte nám nebo využijte náš formulář</p>
+                    </div>
+                    <div>
+                      <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)]">
+                        2. Návrh řešení a podmínek
+                      </h3>
+                      <p className="mt-1.5 text-body-muted">
+                        Společně vybereme, zda je pro vás nejvýhodnější zpětný leasing, zástava nemovitosti nebo přímý výkup.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)]">
+                        3. Okamžité vyplacení peněz
+                      </h3>
+                      <p className="mt-1.5 text-body-muted">Vše vyřídíme rychle, obvykle do několika dní.</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -190,25 +191,29 @@ export default function HomePage() {
           </Container>
         </section>
 
-        {/* Dočasný výkup vozidel */}
-        <section id="vozidla" className="bg-[var(--color-surface-cream)] py-14 lg:py-20">
+        {/* Vozidla: tmavá značková zeleň + světlý text; bílé karty pro hustý text; #informace, #jak-vozidla uvnitř */}
+        <section
+          id="vozidla"
+          className="bg-[rgba(52,86,82,1)] py-14 text-[#f5f2eb] lg:py-20 [--color-foreground:#faf8f5] [--color-muted:#ddd8cf]"
+          style={{ colorScheme: "dark" }}
+        >
           <Container>
             <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
               <div className="space-y-5">
-                <h2 className="font-[family-name:var(--font-cardo)] text-3xl font-semibold leading-tight text-[var(--color-foreground)] md:text-4xl">
+                <h2 className="font-[family-name:var(--font-cardo)] text-3xl font-semibold leading-tight text-white md:text-4xl">
                   Dočasný výkup vozidel
                 </h2>
-                <p className="text-lg font-medium leading-snug text-[var(--color-foreground)] md:text-xl">
+                <p className="text-lg font-medium leading-snug text-white/95 md:text-xl">
                   Získejte finance a nadále
                   <br />
                   užívejte svůj vůz.
                 </p>
-                <p className="text-body-muted">
+                <p className="max-w-prose text-sm leading-snug text-[#ebe6dc] md:text-base">
                   Financování je poskytováno pro osobní, užitková a nákladní vozidla, obytné vozy, motocykly a veterány.
                 </p>
                 <Link
                   href="/#formular"
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[var(--color-cta)] px-8 text-sm font-bold uppercase tracking-wide text-[var(--color-foreground)] transition hover:bg-[var(--color-cta-hover)]"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[var(--color-cta)] px-8 text-sm font-bold uppercase tracking-wide text-[#111111] transition hover:bg-[var(--color-cta-hover)]"
                 >
                   Vyplnit žádost
                 </Link>
@@ -224,14 +229,10 @@ export default function HomePage() {
                 />
               </div>
             </div>
-          </Container>
-        </section>
 
-        {/* O službě vozidel + feature grid — id informace */}
-        <section id="informace" className="bg-[var(--color-accent-warm)] py-14 lg:py-20">
-          <Container>
+            <div id="informace" className="mt-8 border-t border-white/20 pt-8 lg:mt-10 lg:pt-10">
             <h2 className="font-[family-name:var(--font-cardo)] text-3xl font-semibold leading-tight text-[var(--color-foreground)] md:text-4xl md:leading-tight">
-              O službě dočasného výkupu vozidel
+              Co je to dočasný výkup vozidel?
             </h2>
             <p className="mt-5 max-w-4xl text-body-foreground">
               Služba je určena všem majitelům vozidel – financování je poskytováno pro{" "}
@@ -287,45 +288,26 @@ export default function HomePage() {
               ].map((f) => (
                 <li
                   key={f.title}
-                  className="rounded-2xl border border-black/5 bg-white/80 p-6 shadow-sm"
+                  className="rounded-2xl border border-black/5 bg-white p-6 shadow-md shadow-black/15"
                 >
                   <div className="flex gap-3">
-                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/15 text-[var(--color-primary)]">
+                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/12 text-[var(--color-primary)]">
                       <Check className="h-4 w-4" strokeWidth={3} aria-hidden />
                     </span>
                     <div>
-                      <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)]">
+                      <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-slate-900">
                         {f.title}
                       </h3>
-                      <p className="mt-1.5 text-body-muted">{f.body}</p>
+                      <p className="mt-1.5 text-sm leading-snug text-slate-600 md:text-base">{f.body}</p>
                     </div>
                   </div>
                 </li>
               ))}
             </ul>
 
-            <div className="mx-auto mt-12 max-w-2xl rounded-2xl bg-[var(--color-surface-muted)] px-6 py-10 text-center md:px-10">
-              <p className="font-[family-name:var(--font-cardo)] text-xl font-semibold leading-snug text-[var(--color-foreground)]">
-                Využijte služby dočasného výkupu vozidla ještě dnes!
-              </p>
-              <p className="mt-3 text-body-muted">
-                Vyplnění žádosti je nezávazné a z důvodu bezpečnosti nevyžaduje uvedení žádných bankovních údajů.
-              </p>
-              <div className="mt-6 flex justify-center">
-                <Link
-                  href="/#formular"
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[var(--color-cta)] px-10 text-sm font-bold uppercase tracking-wide text-[var(--color-foreground)] transition hover:bg-[var(--color-cta-hover)]"
-                >
-                  Vyplnit žádost
-                </Link>
-              </div>
             </div>
-          </Container>
-        </section>
 
-        {/* Jak funguje — vozidlo */}
-        <section className="bg-white py-14 lg:py-20">
-          <Container>
+            <div id="jak-vozidla" className="mt-8 border-t border-white/20 pt-8 lg:mt-10 lg:pt-10">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12 xl:gap-14">
               <div className="min-w-0 flex-1">
                 <h2 className="text-center font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight text-[var(--color-foreground)] md:text-3xl lg:text-left">
@@ -365,15 +347,15 @@ export default function HomePage() {
                       body: "Vůz si můžete kdykoliv odkoupit zpět za stejnou cenu, za jakou byl vykoupen.",
                     },
                   ].map((step) => (
-                    <li key={step.title} className="flex gap-3 border-b border-black/5 pb-5 last:border-0 last:pb-0">
-                      <span className="font-[family-name:var(--font-cardo)] text-2xl font-bold leading-none text-[var(--color-primary)]">
+                    <li key={step.title} className="flex gap-3">
+                      <span className="font-[family-name:var(--font-cardo)] text-2xl font-bold leading-none text-[var(--color-cta)]">
                         {step.n}
                       </span>
                       <div className="min-w-0">
-                        <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)]">
+                        <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-white">
                           {step.title}
                         </h3>
-                        <p className="mt-1.5 text-body-muted">{step.body}</p>
+                        <p className="mt-1.5 text-sm leading-snug text-[#ebe6dc] md:text-base">{step.body}</p>
                       </div>
                     </li>
                   ))}
@@ -391,6 +373,7 @@ export default function HomePage() {
                   />
                 </div>
               </div>
+            </div>
             </div>
           </Container>
         </section>

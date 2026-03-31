@@ -3,13 +3,11 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Menu, Phone, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 const nav = [
-  { href: "/#informace", label: "Informace" },
   { href: "/#nemovitosti", label: "Nemovitosti" },
   { href: "/#vozidla", label: "Vozidla" },
-  { href: "/#formular", label: "Poptávka" },
   { href: "/#kontakty", label: "Kontakty" },
 ]
 
@@ -53,13 +51,12 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <a
-            href="tel:+420777400256"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-[var(--color-primary)] px-4 text-body font-semibold text-white transition-colors hover:bg-[var(--color-primary-hover)]"
+          <Link
+            href="/#formular"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-[var(--color-primary)] px-4 text-body font-semibold text-white transition-colors hover:bg-[var(--color-primary-hover)]"
           >
-            <Phone className="h-4 w-4" aria-hidden />
-            +420 777 400 256
-          </a>
+            Nezávazná poptávka
+          </Link>
         </nav>
       </div>
 
@@ -76,14 +73,13 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <a
-              href="tel:+420777400256"
-              className="mt-2 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-4 font-semibold text-white hover:bg-[var(--color-primary-hover)]"
+            <Link
+              href="/#formular"
+              className="mt-2 inline-flex min-h-[48px] items-center justify-center rounded-xl bg-[var(--color-primary)] px-4 text-center font-semibold text-white hover:bg-[var(--color-primary-hover)]"
               onClick={() => setOpen(false)}
             >
-              <Phone className="h-5 w-5" aria-hidden />
-              Zavolat +420 777 400 256
-            </a>
+              Nezávazná poptávka
+            </Link>
           </nav>
         </div>
       )}

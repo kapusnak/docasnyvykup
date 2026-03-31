@@ -130,7 +130,7 @@ export function LeadForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="flex h-12 min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] text-base font-semibold text-white transition-colors hover:bg-[var(--color-primary-hover)] disabled:opacity-70"
+        className="flex h-12 min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-cta)] text-base font-semibold text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-cta-hover)] disabled:opacity-70"
       >
         {status === "sending" ? (
           <>

@@ -11,10 +11,14 @@
   --color-primary: #164a41;
   --color-primary-hover: #0f3832;
   --color-surface-cream: #f3f0e7;
+  /* Cool slate — vozidla block; čitelné s tmavým textem, vizuálně odlišné od krémové nemovitosti */
+  --color-surface-vozidla: #f1f5f9;
   --color-surface-muted: #f1f1ef;
   --color-accent-warm: #f5e9d6;
   --color-accent-teal: #164a41;
   --color-footer: #164a41;
+  --color-cta: #f1b24a;
+  --color-cta-hover: #e5a842;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-cardo), ui-serif, Georgia, serif;
   --radius-lg: 1rem;
@@ -23,8 +27,16 @@
 }
 
 @layer base {
+  /*
+   * Must match fixed header height (header inner row: py-3 + min-h-[44px] content + header border-b).
+   * Using 4.5rem overshoots ~3px and scrolls past the hero→section color line; tighter calc aligns that edge with the bar bottom.
+   */
+  :root {
+    --header-scroll-offset: calc(0.75rem + 44px + 0.75rem + 1px);
+  }
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--header-scroll-offset);
   }
   body {
     @apply bg-[var(--color-background)] text-[var(--color-foreground)] antialiased text-sm leading-snug md:text-base;
