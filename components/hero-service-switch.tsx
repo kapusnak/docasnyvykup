@@ -29,7 +29,7 @@ export function HeroServiceSwitch() {
     >
       <div className="flex rounded-full border border-white/30 bg-black/30 p-1 shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] backdrop-blur-sm">
         <Link
-          href="/#nemovitosti"
+          href="/?mode=nemovitosti#nemovitosti"
           scroll
           aria-current={selected === "nemovitosti" ? "true" : undefined}
           onClick={() => setSelected("nemovitosti")}
@@ -46,7 +46,7 @@ export function HeroServiceSwitch() {
           </span>
         </Link>
         <Link
-          href="/#vozidla"
+          href="/?mode=vozidlo#vozidla"
           scroll
           aria-current={selected === "vozidla" ? "true" : undefined}
           onClick={() => setSelected("vozidla")}

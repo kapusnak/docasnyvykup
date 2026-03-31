@@ -17,7 +17,7 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-black/5 bg-[var(--color-background)]/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-[72rem] items-center justify-between gap-4 px-4 py-3 sm:px-10 lg:px-16 xl:px-20 2xl:px-24">
-        <Link href="/" className="flex min-h-[44px] items-center gap-3">
+        <Link href="/" className="flex min-h-[44px] min-w-0 shrink items-center gap-3">
           <Image
             src="/cropped-docasnyvykup-logo-circled.png"
             alt="Dočasný výkup"
@@ -26,20 +26,28 @@ export function Header() {
             className="h-11 w-11 shrink-0 rounded-full object-cover"
             priority
           />
-          <span className="font-[family-name:var(--font-cardo)] text-lg font-semibold tracking-tight text-[#111] sm:text-xl">
+          <span className="hidden font-[family-name:var(--font-cardo)] text-lg font-semibold tracking-tight text-[#111] sm:text-xl md:inline">
             Dočasný výkup
           </span>
         </Link>
 
-        <button
-          type="button"
-          className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-[#111] md:hidden"
-          aria-expanded={open}
-          aria-label={open ? "Zavřít menu" : "Otevřít menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex shrink-0 items-center gap-2 md:hidden">
+          <Link
+            href="/#formular"
+            className="inline-flex min-h-[44px] max-w-[calc(100vw-8.5rem)] items-center justify-center rounded-full bg-[var(--color-primary)] px-3 py-2 text-center text-[11px] font-bold uppercase leading-snug tracking-wide text-white transition-colors hover:bg-[var(--color-primary-hover)] min-[380px]:max-w-none min-[380px]:px-4 min-[380px]:text-xs"
+          >
+            Nezávazná poptávka
+          </Link>
+          <button
+            type="button"
+            className="flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-lg text-[#111]"
+            aria-expanded={open}
+            aria-label={open ? "Zavřít menu" : "Otevřít menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Hlavní navigace">
           {nav.map((item) => (
@@ -73,13 +81,6 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/#formular"
-              className="mt-2 inline-flex min-h-[48px] items-center justify-center rounded-xl bg-[var(--color-primary)] px-4 text-center font-semibold text-white hover:bg-[var(--color-primary-hover)]"
-              onClick={() => setOpen(false)}
-            >
-              Nezávazná poptávka
-            </Link>
           </nav>
         </div>
       )}

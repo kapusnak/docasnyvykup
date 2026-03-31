@@ -10,19 +10,6 @@ const SOCIAL = {
   instagram: "https://www.instagram.com/docasnyvykup.cz/",
 } as const
 
-function InkasniMark({ className }: { className?: string }) {
-  return (
-    <div
-      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-[#c5e063] text-white shadow-sm ${className ?? ""}`}
-      aria-hidden
-    >
-      <svg viewBox="0 0 32 32" className="h-6 w-6" fill="currentColor">
-        <path d="M8 4h10v6H8V4zm14 0h6v10h-6V4zM4 14h10v10H4V14zm14 4h10v10H18V18zM14 10h4v4h-4v-4z" />
-      </svg>
-    </div>
-  )
-}
-
 export function Footer() {
   const year = new Date().getFullYear()
 
@@ -39,13 +26,13 @@ export function Footer() {
   return (
     <footer id="kontakty" className="bg-[#164A41] text-white">
       <Container className="py-10 lg:py-12">
-        <div className="grid gap-8 lg:grid-cols-3 lg:gap-10">
+        <h2 className="mb-6 font-[family-name:var(--font-cardo)] text-xl font-semibold leading-tight tracking-tight text-white md:text-2xl lg:mb-8">
+          Kontakty
+        </h2>
+        <div className="grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 min-[480px]:gap-8 lg:gap-10 lg:items-start">
           {/* Nemovitosti */}
           <div className="min-w-0">
-            <h2 className="font-[family-name:var(--font-cardo)] text-xl font-semibold leading-tight tracking-tight text-white md:text-2xl">
-              Kontakty
-            </h2>
-            <div className="mt-2.5 space-y-2">
+            <div className="space-y-2">
               <p className="text-sm font-semibold text-white">Dočasný výkup nemovitostí</p>
               <p className={bodySm}>
                 <span className={muted}>Telefon: </span>
@@ -79,8 +66,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Vozidla — odsazení podle výšky „Kontakty“ v 1. sloupci */}
-          <div className="min-w-0 space-y-2 lg:pt-[2.65rem]">
+          {/* Vozidla */}
+          <div className="min-w-0 space-y-2">
             <p className="text-sm font-semibold text-white">Dočasný výkup vozidel</p>
             <div className={`${bodySm} space-y-0.5`}>
               <p>
@@ -142,47 +129,26 @@ export function Footer() {
               <p>IČ: 67020283</p>
               <p>Adresa: Podvesná VII/2046, 760 01 Zlín</p>
             </div>
-          </div>
-
-          {/* Partner — na desktopu zarovnání jako ostatní sloupce */}
-          <div className="flex min-w-0 flex-col gap-2 border-t border-white/10 pt-6 lg:border-t-0 lg:pt-[2.65rem]">
-            <p className={`text-sm leading-normal ${muted}`}>Naším hlavním partnerem je:</p>
-            <a
-              href="https://vymahanidluzniku.cz/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex w-fit flex-col gap-2 rounded-md outline-offset-4 transition hover:opacity-95 focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#164A41] sm:flex-row sm:items-center sm:gap-3 lg:flex-col lg:items-start"
-              aria-label="Inkasní kancelář — inkaso a správa pohledávek (vymahanidluzniku.cz)"
-            >
-              <InkasniMark />
-              <div className="min-w-0">
-                <p className="font-[family-name:var(--font-cardo)] text-base font-bold uppercase tracking-wide text-white underline-offset-2 transition group-hover:underline">
-                  Inkasní kancelář
-                </p>
-                <p className={`text-xs leading-snug ${muted}`}>inkaso a správa pohledávek</p>
-              </div>
-            </a>
-            <p className="max-w-sm font-[family-name:var(--font-cardo)] text-sm italic leading-snug text-white/90">
-              Již 25 let pomáháme získat, co Vám náleží.
-            </p>
-            <a
-              href="https://www.zivefirmy.cz/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-1 inline-flex w-fit flex-col gap-1 rounded-xl border border-white/15 bg-white/10 px-3 py-2.5 text-left shadow-sm backdrop-blur-sm transition hover:bg-white/[0.14]"
-            >
-              <Image
-                src="/zivefirmy-spolehliva-firma-badge.png"
-                alt=""
-                width={125}
-                height={125}
-                className="h-16 w-16 shrink-0 object-contain"
-                aria-hidden
-              />
-              <span className={`text-[10px] font-medium uppercase tracking-wide ${muted}`}>zivefirmy.cz</span>
-              <span className="text-[11px] font-semibold uppercase text-white/95">Spolehlivá firma</span>
-              <span className={`text-[10px] ${muted}`}>2026</span>
-            </a>
+            <div className="mt-4 border-t border-white/10 pt-4">
+              <a
+                href="https://www.zivefirmy.cz/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-fit flex-col gap-1 rounded-xl border border-white/15 bg-white/10 px-3 py-2.5 text-left shadow-sm backdrop-blur-sm transition hover:bg-white/[0.14]"
+              >
+                <Image
+                  src="/zivefirmy-spolehliva-firma-badge.png"
+                  alt=""
+                  width={125}
+                  height={125}
+                  className="h-16 w-16 shrink-0 object-contain"
+                  aria-hidden
+                />
+                <span className={`text-[10px] font-medium uppercase tracking-wide ${muted}`}>zivefirmy.cz</span>
+                <span className="text-[11px] font-semibold uppercase text-white/95">Spolehlivá firma</span>
+                <span className={`text-[10px] ${muted}`}>2026</span>
+              </a>
+            </div>
           </div>
         </div>
 

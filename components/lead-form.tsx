@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useSearchParams } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, Controller } from "react-hook-form"
 import { z } from "zod"
@@ -29,12 +29,7 @@ import { cn } from "@/lib/utils"
 const inputClass =
   "h-12 w-full rounded-xl border border-[#cfcabe] bg-white px-4 text-base text-[var(--color-foreground)] shadow-sm outline-none transition-[box-shadow] focus:ring-2 focus:ring-[var(--color-primary)]"
 
-const serviceTypeEnum = z.enum([
-  "zpetny-leasing",
-  "zastava",
-  "primy-vykup",
-  "bez-zajisteni",
-])
+const serviceTypeEnum = z.enum(["zpetny-leasing", "zastava", "primy-vykup", "bez-zajisteni"])
 
 const leadFormSchema = z
   .object({
@@ -143,12 +138,12 @@ function buildVozidloMessage(v: LeadFormValues, pagePath: string): string {
   return lines.join("\n")
 }
 
-function readInitialModeFromUrl(): "nemovitosti" | "vozidlo" | null {
+/** Query `mode` wins over section hash (#vozidla / #nemovitosti). #formular alone does not imply a mode. */
+function readLeadModeFromLocation(): "nemovitosti" | "vozidlo" | null {
   if (typeof window === "undefined") return null
   const params = new URLSearchParams(window.location.search)
   const q = params.get("mode")
-  if (q === "vozidlo") return "vozidlo"
-  if (q === "nemovitosti") return "nemovitosti"
+  if (q === "vozidlo" || q === "nemovitosti") return q
   const h = window.location.hash
   if (h === "#vozidla") return "vozidlo"
   if (h === "#nemovitosti") return "nemovitosti"
@@ -157,6 +152,8 @@ function readInitialModeFromUrl(): "nemovitosti" | "vozidlo" | null {
 
 export function LeadForm() {
   const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const modeQuery = searchParams.get("mode")
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
   const [socialProofText, setSocialProofText] = useState(SOCIAL_PROOF_FALLBACK)
 
@@ -182,36 +179,9 @@ export function LeadForm() {
   }, [])
 
   useEffect(() => {
-    const initial = readInitialModeFromUrl()
-    if (!initial) return
-    const email = form.getValues("email")
-    const phoneDigits = form.getValues("phoneDigits")
-    if (initial === "vozidlo") {
-      form.reset({
-        assetMode: "vozidlo",
-        email,
-        phoneDigits,
-        ...emptyNemovitostiFields(),
-        name: "",
-        ...emptyVozidloFields(),
-      })
-    } else {
-      form.reset({
-        assetMode: "nemovitosti",
-        email,
-        phoneDigits,
-        ...emptyNemovitostiFields(),
-        ...emptyVozidloFields(),
-      })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- run once on mount for URL/hash
-  }, [])
-
-  useEffect(() => {
-    const onHash = () => {
-      const h = window.location.hash
-      if (h !== "#vozidla" && h !== "#nemovitosti") return
-      const mode = h === "#vozidla" ? "vozidlo" : "nemovitosti"
+    const syncFromUrl = () => {
+      const mode = readLeadModeFromLocation()
+      if (!mode) return
       const email = form.getValues("email")
       const phoneDigits = form.getValues("phoneDigits")
       if (mode === "vozidlo") {
@@ -234,9 +204,10 @@ export function LeadForm() {
       }
       setStatus("idle")
     }
-    window.addEventListener("hashchange", onHash)
-    return () => window.removeEventListener("hashchange", onHash)
-  }, [form])
+    syncFromUrl()
+    window.addEventListener("hashchange", syncFromUrl)
+    return () => window.removeEventListener("hashchange", syncFromUrl)
+  }, [form, modeQuery])
 
   const switchMode = useCallback(
     (mode: "nemovitosti" | "vozidlo") => {
@@ -585,21 +556,6 @@ export function LeadForm() {
           </div>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
             <div>
-              <label htmlFor="lead-email-voz" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">
-                E-mail {requiredStar}
-              </label>
-              <input
-                id="lead-email-voz"
-                type="email"
-                autoComplete="email"
-                className={inputClass}
-                {...form.register("email")}
-              />
-              {form.formState.errors.email && (
-                <p className="mt-1 text-sm text-red-600">{form.formState.errors.email.message}</p>
-              )}
-            </div>
-            <div>
               <label htmlFor="lead-phone-voz" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">
                 Telefonní číslo {requiredStar}
               </label>
@@ -622,6 +578,21 @@ export function LeadForm() {
               />
               {form.formState.errors.phoneDigits && (
                 <p className="mt-1 text-sm text-red-600">{form.formState.errors.phoneDigits.message}</p>
+              )}
+            </div>
+            <div>
+              <label htmlFor="lead-email-voz" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">
+                E-mail {requiredStar}
+              </label>
+              <input
+                id="lead-email-voz"
+                type="email"
+                autoComplete="email"
+                className={inputClass}
+                {...form.register("email")}
+              />
+              {form.formState.errors.email && (
+                <p className="mt-1 text-sm text-red-600">{form.formState.errors.email.message}</p>
               )}
             </div>
           </div>

@@ -33,6 +33,9 @@
    */
   :root {
     --header-scroll-offset: calc(0.75rem + 44px + 0.75rem + 1px);
+    /* Phone popup: lifted above cookie bar when visible (BottomChrome sets when needed) */
+    --docasnyvykup-popup-bottom-mob: 0px;
+    --docasnyvykup-popup-bottom-lg: 1.5rem;
   }
   html {
     scroll-behavior: smooth;

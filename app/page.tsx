@@ -1,14 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
+import { Suspense } from "react"
 import { Check } from "lucide-react"
 
 import { Container } from "@/components/container"
-import { CookieBanner } from "@/components/cookie-banner"
+import { BottomChrome } from "@/components/bottom-chrome"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { HeroServiceSwitch } from "@/components/hero-service-switch"
 import { LeadForm } from "@/components/lead-form"
-import { PhonePopup } from "@/components/phone-popup"
 import { FormularInlineLink } from "@/components/formular-inline-link"
 import { ZavolejteTelLink } from "@/components/zavolejte-tel-link"
 
@@ -30,14 +30,14 @@ export default function HomePage() {
           className="relative flex min-h-[min(72svh,560px)] items-center justify-center bg-[var(--color-surface-muted)] pt-[4.5rem] md:min-h-[min(88svh,880px)] md:pt-20"
           aria-label="Úvod"
         >
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 overflow-hidden">
             <Image
               src={img.hero}
               alt=""
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center"
+              className="object-cover object-center max-lg:origin-[50%_24%] max-lg:scale-[1.38] lg:origin-center lg:scale-100"
             />
             <div
               className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/60"
@@ -83,7 +83,8 @@ export default function HomePage() {
                   bydlet ve svém domě.
                 </p>
                 <p className="text-body-muted">
-                  Rychlé a diskrétní řešení finančních potíží formou zpětného leasingu.
+                  Rychlé a diskrétní řešení finančních potíží formou zpětného leasingu, zástavy nemovitosti, přímého výkupu
+                  nebo bez zajištění — vždy podle vaší situace.
                 </p>
                 <Link
                   href="/?mode=nemovitosti#formular"
@@ -168,31 +169,42 @@ export default function HomePage() {
                   <h2 className="text-center font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight text-[var(--color-foreground)] md:text-3xl lg:text-left">
                     Jak funguje dočasný výkup nemovitostí?
                   </h2>
-                  <div className="space-y-5 lg:space-y-4">
-                    <div>
-                      <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)]">
-                        1. Nezávazná konzultace
-                      </h3>
-                      <p className="mt-1.5 text-body-muted">
-                        <ZavolejteTelLink>Zavolejte</ZavolejteTelLink> nám nebo využijte náš{" "}
-                        <FormularInlineLink>formulář</FormularInlineLink>
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)]">
-                        2. Návrh řešení a podmínek
-                      </h3>
-                      <p className="mt-1.5 text-body-muted">
-                        Společně vybereme, zda je pro vás nejvýhodnější zpětný leasing, zástava nemovitosti nebo přímý výkup.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)]">
-                        3. Okamžité vyplacení peněz
-                      </h3>
-                      <p className="mt-1.5 text-body-muted">Vše vyřídíme rychle, obvykle do několika dní.</p>
-                    </div>
-                  </div>
+                  <ol className="mx-auto mt-6 max-w-2xl list-none space-y-5 lg:mx-0 lg:mt-8 lg:space-y-5">
+                    {[
+                      {
+                        n: "1.",
+                        title: "Nezávazná konzultace",
+                        body: (
+                          <>
+                            <ZavolejteTelLink>Zavolejte</ZavolejteTelLink> nám nebo využijte náš{" "}
+                            <FormularInlineLink leadMode="nemovitosti">formulář</FormularInlineLink>
+                          </>
+                        ),
+                      },
+                      {
+                        n: "2.",
+                        title: "Návrh řešení a podmínek",
+                        body: "Společně vybereme, zda je pro vás nejvýhodnější zpětný leasing, zástava nemovitosti nebo přímý výkup.",
+                      },
+                      {
+                        n: "3.",
+                        title: "Okamžité vyplacení peněz",
+                        body: "Vše vyřídíme rychle, obvykle do několika dní.",
+                      },
+                    ].map((step) => (
+                      <li key={step.title} className="flex gap-3">
+                        <span className="font-[family-name:var(--font-cardo)] text-2xl font-bold leading-none text-[var(--color-cta)]">
+                          {step.n}
+                        </span>
+                        <div className="min-w-0">
+                          <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)]">
+                            {step.title}
+                          </h3>
+                          <p className="mt-1.5 text-sm leading-snug text-body-muted md:text-base">{step.body}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
                 </div>
               </div>
             </div>
@@ -330,7 +342,8 @@ export default function HomePage() {
                       title: "Kontaktujte nás",
                       body: (
                         <>
-                          Vyplňte online <FormularInlineLink variant="dark">formulář</FormularInlineLink> nebo nám{" "}
+                          Vyplňte online <FormularInlineLink variant="dark" leadMode="vozidlo">formulář</FormularInlineLink>{" "}
+                          nebo nám{" "}
                           <ZavolejteTelLink variant="dark">zavolejte</ZavolejteTelLink>.
                         </>
                       ),
@@ -372,14 +385,15 @@ export default function HomePage() {
               </div>
               <div className="w-full min-w-0 shrink-0 lg:mx-0 lg:w-[min(100%,280px)] xl:w-[min(100%,320px)]">
                 <div className="w-full overflow-hidden rounded-2xl shadow-lg">
-                  <Image
-                    src={img.interior}
-                    alt="Interiér vozidla"
-                    width={683}
-                    height={1024}
-                    className="aspect-video w-full object-cover object-top lg:aspect-auto lg:max-h-[min(26rem,50vh)] lg:object-center"
-                    sizes="(max-width: 1023px) 100vw, 300px"
-                  />
+                  <div className="relative w-full max-lg:aspect-video lg:h-[min(26rem,50vh)] lg:min-h-[12rem]">
+                    <Image
+                      src={img.interior}
+                      alt="Interiér vozidla"
+                      fill
+                      className="object-cover max-lg:object-[47%_62%] lg:object-center"
+                      sizes="(max-width: 1023px) 100vw, 300px"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -396,13 +410,15 @@ export default function HomePage() {
               </h2>
               <p className="mt-3 text-center text-body-muted">
                 Vyplňte údaje a ozveme se vám co nejdříve. Nebo volejte{" "}
-                <a href="tel:+420777400256" className="font-semibold text-[var(--color-primary)]">
-                  +420 777 400 256
+                <a href="tel:+420776075150" className="font-semibold text-[var(--color-primary)]">
+                  +420 776 075 150
                 </a>
                 .
               </p>
               <div className="mt-8">
-                <LeadForm />
+                <Suspense fallback={null}>
+                  <LeadForm />
+                </Suspense>
               </div>
             </div>
           </Container>
@@ -410,8 +426,7 @@ export default function HomePage() {
 
         <Footer />
       </main>
-      <PhonePopup />
-      <CookieBanner />
+      <BottomChrome />
     </>
   )
 }

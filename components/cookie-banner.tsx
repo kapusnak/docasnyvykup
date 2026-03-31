@@ -5,7 +5,12 @@ import Link from "next/link"
 
 const STORAGE_KEY = "docasnyvykup-cookie-consent"
 
-export function CookieBanner() {
+type CookieBannerProps = {
+  /** Fires when the bar is shown or hidden (e.g. to offset the phone popup above it). */
+  onVisibleChange?: (visible: boolean) => void
+}
+
+export function CookieBanner({ onVisibleChange }: CookieBannerProps) {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -19,6 +24,10 @@ export function CookieBanner() {
       }
     })
   }, [])
+
+  useEffect(() => {
+    onVisibleChange?.(show)
+  }, [show, onVisibleChange])
 
   function accept() {
     try {
@@ -35,7 +44,7 @@ export function CookieBanner() {
     <div
       role="dialog"
       aria-labelledby="cookie-banner-title"
-      className="fixed bottom-0 left-0 right-0 z-[60] border-t border-black/10 bg-[#f9f9f9] px-6 py-4 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] sm:px-10 sm:py-5 lg:px-16 xl:px-20 2xl:px-24"
+      className="fixed bottom-0 left-0 right-0 z-50 border-t border-black/10 bg-[#f9f9f9] px-6 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-4px_24px_rgba(0,0,0,0.08)] sm:px-10 sm:pt-5 sm:pb-[max(1.25rem,env(safe-area-inset-bottom))] lg:px-16 xl:px-20 2xl:px-24"
     >
       <div className="mx-auto flex max-w-[72rem] flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="text-body-muted">
