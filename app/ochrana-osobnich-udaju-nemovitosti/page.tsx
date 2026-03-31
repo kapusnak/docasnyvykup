@@ -10,7 +10,7 @@ export default function OchranaNemovitostiRedirectPage() {
     router.replace("/ochrana-osobnich-udaju")
   }, [router])
   return (
-    <p className="mx-auto max-w-[80rem] px-4 py-24 text-center text-[var(--color-muted)]">
+    <p className="mx-auto max-w-[72rem] px-6 py-24 text-center text-body-muted sm:px-10 lg:px-16 xl:px-20 2xl:px-24">
       Přesměrovávám na zásady ochrany osobních údajů…
     </p>
   )

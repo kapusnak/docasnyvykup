@@ -76,12 +76,12 @@ export function PhonePopup() {
           <X className="h-5 w-5" />
         </button>
 
-        <h3 className="pr-10 text-lg font-bold text-white lg:text-2xl">Potřebujete poradit?</h3>
-        <p className="mt-1 text-sm text-white/85">
+        <h3 className="pr-10 text-lg font-bold leading-snug text-white lg:text-2xl">Potřebujete poradit?</h3>
+        <p className="mt-1.5 text-body-inverse">
           Nechte nám telefon, ozveme se vám a nezávazně vše prokonzultujeme.
         </p>
 
-        <form onSubmit={onSubmit} className="mt-4 flex flex-col gap-3">
+        <form onSubmit={onSubmit} className="mt-3 flex flex-col gap-2.5">
           <div className="relative">
             <Phone className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--color-muted)]" />
             <input
@@ -95,7 +95,9 @@ export function PhonePopup() {
               required
             />
           </div>
-          {status === "error" && <p className="text-xs text-red-100">Zadejte platné číslo (9 číslic).</p>}
+          {status === "error" && (
+            <p className="text-xs leading-snug text-red-100 md:text-sm">Zadejte platné číslo (9 číslic).</p>
+          )}
           <button
             type="submit"
             disabled={status === "sending"}

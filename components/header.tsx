@@ -18,7 +18,7 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-black/5 bg-[var(--color-background)]/95 backdrop-blur-md">
-      <div className="mx-auto flex max-w-[80rem] items-center justify-between gap-4 px-5 py-3 sm:px-8 lg:px-12 xl:px-14">
+      <div className="mx-auto flex max-w-[72rem] items-center justify-between gap-4 px-6 py-3 sm:px-10 lg:px-16 xl:px-20 2xl:px-24">
         <Link href="/" className="flex min-h-[44px] items-center gap-3">
           <Image
             src="/cropped-docasnyvykup-logo-circled.png"
@@ -48,14 +48,14 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="min-h-[44px] content-center text-sm font-medium text-[#636363] transition-colors hover:text-[#111]"
+              className="min-h-[44px] content-center text-body font-medium text-[#636363] transition-colors hover:text-[#111]"
             >
               {item.label}
             </Link>
           ))}
           <a
             href="tel:+420777400256"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-[var(--color-primary)] px-4 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-primary-hover)]"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-[var(--color-primary)] px-4 text-body font-semibold text-white transition-colors hover:bg-[var(--color-primary-hover)]"
           >
             <Phone className="h-4 w-4" aria-hidden />
             +420 777 400 256
@@ -65,12 +65,12 @@ export function Header() {
 
       {open && (
         <div className="border-t border-black/5 bg-[var(--color-background)] md:hidden">
-          <nav className="mx-auto flex max-w-[80rem] flex-col gap-1 px-5 py-3 sm:px-8 lg:px-12 xl:px-14" aria-label="Mobilní navigace">
+          <nav className="mx-auto flex max-w-[72rem] flex-col gap-1 px-6 py-3 sm:px-10 lg:px-16 xl:px-20 2xl:px-24" aria-label="Mobilní navigace">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="min-h-[48px] content-center rounded-lg px-2 text-base font-medium text-[#111] hover:bg-black/5"
+                className="min-h-[48px] content-center rounded-lg px-2 text-body font-medium text-[#111] hover:bg-black/5"
                 onClick={() => setOpen(false)}
               >
                 {item.label}

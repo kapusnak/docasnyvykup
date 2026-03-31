@@ -49,9 +49,9 @@ export function LeadForm() {
   }
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="mx-auto max-w-xl space-y-4">
+    <form onSubmit={form.handleSubmit(onSubmit)} className="mx-auto max-w-xl space-y-3">
       <div>
-        <label htmlFor="lead-name" className="mb-1.5 block text-sm font-medium text-[var(--color-foreground)]">
+        <label htmlFor="lead-name" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">
           Jméno a příjmení
         </label>
         <input
@@ -65,7 +65,7 @@ export function LeadForm() {
         )}
       </div>
       <div>
-        <label htmlFor="lead-email" className="mb-1.5 block text-sm font-medium text-[var(--color-foreground)]">
+        <label htmlFor="lead-email" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">
           E-mail
         </label>
         <input
@@ -80,7 +80,7 @@ export function LeadForm() {
         )}
       </div>
       <div>
-        <label htmlFor="lead-phone" className="mb-1.5 block text-sm font-medium text-[var(--color-foreground)]">
+        <label htmlFor="lead-phone" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">
           Telefon
         </label>
         <Controller
@@ -105,7 +105,7 @@ export function LeadForm() {
         )}
       </div>
       <div>
-        <label htmlFor="lead-msg" className="mb-1.5 block text-sm font-medium text-[var(--color-foreground)]">
+        <label htmlFor="lead-msg" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">
           Zpráva (volitelné)
         </label>
         <textarea
@@ -117,12 +117,12 @@ export function LeadForm() {
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-red-600" role="alert">
+        <p className="text-body text-red-600" role="alert">
           Odeslání se nepovedlo. Zkuste to prosím znovu nebo nás kontaktujte telefonicky.
         </p>
       )}
       {status === "success" && (
-        <p className="text-sm text-[var(--color-primary)]" role="status">
+        <p className="text-body text-[var(--color-primary)]" role="status">
           Děkujeme! Brzy vás budeme kontaktovat.
         </p>
       )}
@@ -141,7 +141,7 @@ export function LeadForm() {
           "Odeslat poptávku"
         )}
       </button>
-      <p className="text-center text-xs text-[var(--color-muted)]">
+      <p className="text-center text-body-muted">
         Odesláním souhlasíte se zpracováním osobních údajů dle{" "}
         <a href="/ochrana-osobnich-udaju" className="text-[var(--color-primary)] underline-offset-2 hover:underline">
           zásad ochrany osobních údajů

@@ -19,7 +19,7 @@
   --font-heading: var(--font-cardo), ui-serif, Georgia, serif;
   --radius-lg: 1rem;
   --radius-xl: 1rem;
-  --breakpoint-content: 80rem;
+  --breakpoint-content: 72rem;
 }
 
 @layer base {
@@ -27,7 +27,23 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-[var(--color-background)] text-[var(--color-foreground)] antialiased;
+    @apply bg-[var(--color-background)] text-[var(--color-foreground)] antialiased text-sm leading-snug md:text-base;
+  }
+}
+
+/* Dense body copy — use site-wide for consistent rhythm (leading-snug, sm→md step) */
+@layer components {
+  .text-body {
+    @apply text-sm leading-snug md:text-base;
+  }
+  .text-body-muted {
+    @apply text-sm leading-snug text-[var(--color-muted)] md:text-base;
+  }
+  .text-body-foreground {
+    @apply text-sm leading-snug text-[var(--color-foreground)] md:text-base;
+  }
+  .text-body-inverse {
+    @apply text-sm leading-snug text-white/90 md:text-base;
   }
 }
 
