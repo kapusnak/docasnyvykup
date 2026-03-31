@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 
@@ -19,18 +18,11 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-black/5 bg-[var(--color-background)]/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-[72rem] items-center justify-between gap-4 px-4 py-3 sm:px-10 lg:px-16 xl:px-20 2xl:px-24">
-        <Link href="/" className="flex min-h-[44px] min-w-0 shrink items-center gap-3">
-          <Image
-            src="/cropped-docasnyvykup-logo-circled.webp"
-            alt="Dočasný výkup"
-            width={44}
-            height={44}
-            className="h-11 w-11 shrink-0 rounded-full object-cover"
-            priority
-          />
-          <span className="hidden font-[family-name:var(--font-cardo)] text-lg font-semibold tracking-tight text-[#111] sm:text-xl md:inline">
-            Dočasný výkup
-          </span>
+        <Link
+          href="/"
+          className="flex min-h-[44px] min-w-0 shrink items-center font-[family-name:var(--font-cardo)] text-base font-semibold leading-tight tracking-tight text-[#111] sm:text-lg md:text-xl"
+        >
+          Dočasný výkup s.r.o.
         </Link>
 
         <div className="flex shrink-0 items-center gap-2 md:hidden">
