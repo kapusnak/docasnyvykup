@@ -3,6 +3,8 @@
 import { startTransition, useEffect, useState } from "react"
 import Link from "next/link"
 
+import { SectionRule } from "@/components/section-rule"
+
 const STORAGE_KEY = "docasnyvykup-cookie-consent"
 
 type CookieBannerProps = {
@@ -44,8 +46,9 @@ export function CookieBanner({ onVisibleChange }: CookieBannerProps) {
     <div
       role="dialog"
       aria-labelledby="cookie-banner-title"
-      className="fixed bottom-0 left-0 right-0 z-50 border-t border-black/10 bg-[#f9f9f9] px-6 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-[0_-4px_24px_rgba(0,0,0,0.08)] sm:px-10 sm:pt-5 sm:pb-[max(1.25rem,env(safe-area-inset-bottom))] lg:px-16 xl:px-20 2xl:px-24"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-[#f9f9f9] px-6 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] sm:px-10 sm:pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:pt-4 lg:px-16 xl:px-20 2xl:px-24"
     >
+      <SectionRule className="mb-4 bg-black/12 sm:mb-5" />
       <div className="mx-auto flex max-w-[72rem] flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="text-body-muted">
           <p id="cookie-banner-title" className="font-medium text-[var(--color-foreground)]">

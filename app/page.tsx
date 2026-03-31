@@ -4,6 +4,7 @@ import { Suspense } from "react"
 import { Check } from "lucide-react"
 
 import { Container } from "@/components/container"
+import { SectionRule } from "@/components/section-rule"
 import { BottomChrome } from "@/components/bottom-chrome"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
@@ -13,11 +14,11 @@ import { FormularInlineLink } from "@/components/formular-inline-link"
 import { ZavolejteTelLink } from "@/components/zavolejte-tel-link"
 
 const img = {
-  hero: "/media/2025/03/refargotohp-UHHFYUTz_n0-unsplash-scaled.jpg",
-  nemExt: "/media/2025/03/geovanny-moreno-Npk17KDiYVo-unsplash-scaled.jpg",
-  nemSteps: "/media/2025/03/julian-gentilezza-ctUWE7BUEzE-unsplash-683x1024.jpg",
-  vozHero: "/media/2025/03/koons-automotive-Rpt1lvCiXvA-unsplash-scaled.jpg",
-  interior: "/media/2025/03/interior-mintosko-fXqlOR8826I-unsplash-683x1024.jpg",
+  hero: "/media/2025/03/refargotohp-UHHFYUTz_n0-unsplash-scaled.webp",
+  nemExt: "/media/2025/03/jakub-zerdzicki-Snk488INnQs-unsplash-house-model.webp",
+  nemSteps: "/media/2025/03/taichi-nakamura-HKpn1x4juSs-unsplash-modern-houses.webp",
+  vozHero: "/media/2025/03/koons-automotive-Rpt1lvCiXvA-unsplash-scaled.webp",
+  interior: "/media/2025/03/ildar-garifullin-Q_xYVJlMDkA-unsplash-console.webp",
 } as const
 
 export default function HomePage() {
@@ -67,8 +68,8 @@ export default function HomePage() {
                 <Image
                   src={img.nemExt}
                   alt="Nemovitost"
-                  width={1200}
-                  height={800}
+                  width={960}
+                  height={639}
                   className="h-48 w-full object-cover sm:h-auto sm:min-h-0"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
                 />
@@ -95,22 +96,24 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="min-w-0 space-y-5 border-t border-black/[0.08] pt-8 lg:space-y-4 lg:pt-10 mt-8 lg:mt-10">
-              <div className="space-y-3 lg:space-y-2.5">
-                <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)] md:text-xl">
-                  Co je to dočasný výkup (zpětný leasing)?
-                </h3>
-                <p className="text-body-muted">
-                  Nemovitost prodáte, získáte okamžité finance, ale nadále v ní bydlíte. Po uplynutí dohodnuté doby máte
-                  možnost si ji odkoupit zpět. Jako alternativu nabízíme i zástavu nebo přímý výkup – řešení vždy
-                  přizpůsobíme vaší situaci.
-                </p>
-              </div>
-              <div className="space-y-2.5 pt-1 lg:space-y-2 lg:pt-0">
-                <h4 className="font-[family-name:var(--font-cardo)] text-base font-semibold leading-snug text-[var(--color-foreground)] md:text-lg">
-                  Pro koho je služba vhodná?
-                </h4>
-                <ul className="space-y-2 text-body-muted">
+            <div className="mt-8 flex min-w-0 flex-col items-center gap-8 lg:mt-10 lg:gap-10">
+              <SectionRule />
+              <div className="w-full space-y-5 lg:space-y-4">
+                <div className="space-y-3 lg:space-y-2.5">
+                  <h3 className="font-[family-name:var(--font-cardo)] text-lg font-semibold leading-snug text-[var(--color-foreground)] md:text-xl">
+                    Co je to dočasný výkup (zpětný leasing)?
+                  </h3>
+                  <p className="text-body-muted">
+                    Nemovitost prodáte, získáte okamžité finance, ale nadále v ní bydlíte. Po uplynutí dohodnuté doby máte
+                    možnost si ji odkoupit zpět. Jako alternativu nabízíme i zástavu nebo přímý výkup – řešení vždy
+                    přizpůsobíme vaší situaci.
+                  </p>
+                </div>
+                <div className="space-y-2.5 pt-1 lg:space-y-2 lg:pt-0">
+                  <h4 className="font-[family-name:var(--font-cardo)] text-base font-semibold leading-snug text-[var(--color-foreground)] md:text-lg">
+                    Pro koho je služba vhodná?
+                  </h4>
+                  <ul className="space-y-2 text-body-muted">
                   {[
                     "Při hrozící exekuci, dražbě či vysokém zadlužení.",
                     "Pro rychlé získání finančních prostředků.",
@@ -124,13 +127,13 @@ export default function HomePage() {
                       <span>{t}</span>
                     </li>
                   ))}
-                </ul>
-              </div>
-              <div className="space-y-2.5 pt-1 lg:space-y-2 lg:pt-0">
-                <h4 className="font-[family-name:var(--font-cardo)] text-base font-semibold leading-snug text-[var(--color-foreground)] md:text-lg">
-                  Výhody pro klienty
-                </h4>
-                <ul className="space-y-2 text-body-muted">
+                  </ul>
+                </div>
+                <div className="space-y-2.5 pt-1 lg:space-y-2 lg:pt-0">
+                  <h4 className="font-[family-name:var(--font-cardo)] text-base font-semibold leading-snug text-[var(--color-foreground)] md:text-lg">
+                    Výhody pro klienty
+                  </h4>
+                  <ul className="space-y-2 text-body-muted">
                   {[
                     "Rychlost: Peníze obvykle vyplácíme do několika dní.",
                     "Jistota bydlení: Zůstáváte ve svém, stěhování není nutné.",
@@ -143,26 +146,26 @@ export default function HomePage() {
                       <span>{t}</span>
                     </li>
                   ))}
-                </ul>
+                  </ul>
+                </div>
               </div>
             </div>
 
             {/* Jak funguje — součást #nemovitosti, kotva #jak-nemovitosti */}
-            <div
-              id="jak-nemovitosti"
-              className="mt-8 border-t border-black/[0.08] pt-8 lg:mt-10 lg:pt-10"
-            >
-              <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12 xl:gap-14">
-                <div className="order-2 shrink-0 lg:order-1 lg:w-[min(100%,280px)] xl:w-[min(100%,320px)]">
-                  <div className="overflow-hidden rounded-2xl shadow-lg">
-                    <Image
-                      src={img.nemSteps}
-                      alt="Konzultace a postup"
-                      width={683}
-                      height={1024}
-                      className="aspect-[4/5] w-full max-h-[min(14rem,32vh)] object-cover object-center md:max-h-[min(18rem,40vh)] lg:aspect-auto lg:max-h-[min(26rem,50vh)]"
-                      sizes="(max-width: 1023px) 100vw, 300px"
-                    />
+            <div id="jak-nemovitosti" className="mt-8 flex flex-col items-center gap-8 lg:mt-10 lg:gap-10">
+              <SectionRule />
+              <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12 xl:gap-14">
+                <div className="order-2 w-full min-w-0 shrink-0 lg:order-1 lg:mx-0 lg:w-[min(100%,280px)] xl:w-[min(100%,320px)]">
+                  <div className="w-full overflow-hidden rounded-2xl shadow-lg">
+                    <div className="relative w-full max-lg:aspect-video lg:h-[min(26rem,50vh)] lg:min-h-[12rem]">
+                      <Image
+                        src={img.nemSteps}
+                        alt="Konzultace a postup"
+                        fill
+                        className="object-cover max-lg:object-[50%_46%] lg:object-[52%_44%]"
+                        sizes="(max-width: 1023px) 100vw, 300px"
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="order-1 min-w-0 flex-1 space-y-5 lg:order-2 lg:space-y-4 lg:pt-0">
@@ -242,15 +245,17 @@ export default function HomePage() {
                 <Image
                   src={img.vozHero}
                   alt="Vozidlo"
-                  width={1200}
-                  height={800}
+                  width={1680}
+                  height={1265}
                   className="h-48 w-full object-cover sm:h-auto sm:min-h-0"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 50vw"
                 />
               </div>
             </div>
 
-            <div id="informace" className="mt-8 border-t border-white/20 pt-8 lg:mt-10 lg:pt-10">
+            <div id="informace" className="mt-8 flex flex-col items-center gap-8 lg:mt-10 lg:gap-10">
+              <SectionRule className="bg-white/25" />
+              <div className="w-full">
             <h2 className="font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight text-[var(--color-foreground)] md:text-3xl md:leading-tight lg:text-4xl">
               Co je to dočasný výkup vozidel?
             </h2>
@@ -325,10 +330,12 @@ export default function HomePage() {
               ))}
             </ul>
 
+              </div>
             </div>
 
-            <div id="jak-vozidla" className="mt-8 border-t border-white/20 pt-8 lg:mt-10 lg:pt-10">
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12 xl:gap-14">
+            <div id="jak-vozidla" className="mt-8 flex flex-col items-center gap-8 lg:mt-10 lg:gap-10">
+              <SectionRule className="bg-white/25" />
+              <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12 xl:gap-14">
               <div className="min-w-0 flex-1">
                 <h2 className="text-center font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight text-[var(--color-foreground)] md:text-3xl lg:text-left">
                   Jak funguje
@@ -390,13 +397,13 @@ export default function HomePage() {
                       src={img.interior}
                       alt="Interiér vozidla"
                       fill
-                      className="object-cover max-lg:object-[47%_62%] lg:object-center"
+                      className="object-cover max-lg:object-[76%_72%] lg:object-[62%_68%]"
                       sizes="(max-width: 1023px) 100vw, 300px"
                     />
                   </div>
                 </div>
               </div>
-            </div>
+              </div>
             </div>
           </Container>
         </section>

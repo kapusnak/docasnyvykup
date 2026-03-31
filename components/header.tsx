@@ -5,6 +5,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 
+import { SectionRule } from "@/components/section-rule"
+
 const nav = [
   { href: "/#nemovitosti", label: "Nemovitosti" },
   { href: "/#vozidla", label: "Vozidla" },
@@ -19,7 +21,7 @@ export function Header() {
       <div className="mx-auto flex max-w-[72rem] items-center justify-between gap-4 px-4 py-3 sm:px-10 lg:px-16 xl:px-20 2xl:px-24">
         <Link href="/" className="flex min-h-[44px] min-w-0 shrink items-center gap-3">
           <Image
-            src="/cropped-docasnyvykup-logo-circled.png"
+            src="/cropped-docasnyvykup-logo-circled.webp"
             alt="Dočasný výkup"
             width={44}
             height={44}
@@ -69,7 +71,10 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-black/5 bg-[var(--color-background)] md:hidden">
+        <div className="bg-[var(--color-background)] md:hidden">
+          <div className="px-4 pt-2 sm:px-10 lg:px-16 xl:px-20 2xl:px-24">
+            <SectionRule className="bg-black/10" />
+          </div>
           <nav className="mx-auto flex max-w-[72rem] flex-col gap-1 px-4 py-3 sm:px-10 lg:px-16 xl:px-20 2xl:px-24" aria-label="Mobilní navigace">
             {nav.map((item) => (
               <Link

@@ -83,10 +83,10 @@ export function WhatsAppQrOpenButton({ buttonClassName, iconClassName }: Props) 
             </h2>
             <div className="rounded-xl bg-white/5 p-1">
               <Image
-                src="/whatsapp-qr-docasnyvykup.png"
+                src="/whatsapp-qr-docasnyvykup.webp"
                 alt="QR kód pro zahájení chatu s docasnyvykup.cz ve WhatsAppu. Firemní účet v aplikaci WhatsApp."
-                width={576}
-                height={1024}
+                width={236}
+                height={420}
                 className="h-auto w-full rounded-lg"
                 sizes="(max-width: 640px) 100vw, 448px"
               />

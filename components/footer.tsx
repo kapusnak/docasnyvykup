@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Facebook, Instagram } from "lucide-react"
 
 import { Container } from "@/components/container"
+import { SectionRule } from "@/components/section-rule"
 import { WhatsAppQrOpenButton } from "@/components/whatsapp-qr-modal"
 
 const SOCIAL = {
@@ -58,7 +59,7 @@ export function Footer() {
                   </Link>
                 </li>
               </ul>
-              <div className={`space-y-0.5 border-t border-white/15 pt-2.5 text-xs leading-snug ${muted}`}>
+              <div className={`mt-6 space-y-0.5 text-xs leading-snug ${muted}`}>
                 <p className="font-medium text-white/95">Dočasný výkup s.r.o.</p>
                 <p>IČ: 23626836</p>
                 <p>Adresa: Podvesná VII/6192, 760 01 Zlín</p>
@@ -124,35 +125,39 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-            <div className={`space-y-0.5 border-t border-white/15 pt-2.5 text-xs leading-snug ${muted}`}>
+            <div className={`mt-6 space-y-0.5 text-xs leading-snug ${muted}`}>
               <p className="font-medium text-white/95">Tým Dočasný výkup</p>
               <p>IČ: 67020283</p>
               <p>Adresa: Podvesná VII/2046, 760 01 Zlín</p>
             </div>
-            <div className="mt-4 border-t border-white/10 pt-4">
+            <div className="mt-8">
               <a
                 href="https://www.zivefirmy.cz/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-fit flex-col gap-1 rounded-xl border border-white/15 bg-white/10 px-3 py-2.5 text-left shadow-sm backdrop-blur-sm transition hover:bg-white/[0.14]"
+                aria-label="ZIVEFIRMY.CZ — Spolehlivá firma 2026"
+                className="inline-flex w-fit max-w-full flex-row items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-3 py-2.5 text-left shadow-sm backdrop-blur-sm transition hover:bg-white/[0.14]"
               >
                 <Image
-                  src="/zivefirmy-spolehliva-firma-badge.png"
+                  src="/zivefirmy-spolehliva-firma-badge.webp"
                   alt=""
                   width={125}
                   height={125}
-                  className="h-16 w-16 shrink-0 object-contain"
+                  className="h-14 w-14 shrink-0 object-contain"
                   aria-hidden
                 />
-                <span className={`text-[10px] font-medium uppercase tracking-wide ${muted}`}>zivefirmy.cz</span>
-                <span className="text-[11px] font-semibold uppercase text-white/95">Spolehlivá firma</span>
-                <span className={`text-[10px] ${muted}`}>2026</span>
+                <span className="flex min-w-0 flex-col gap-0.5 leading-tight">
+                  <span className={`text-[10px] font-medium uppercase tracking-wide ${muted}`}>ZIVEFIRMY.CZ</span>
+                  <span className="text-[11px] font-semibold uppercase text-white/95">Spolehlivá firma</span>
+                  <span className={`text-[10px] ${muted}`}>2026</span>
+                </span>
               </a>
             </div>
           </div>
         </div>
 
-        <div className={`mt-8 space-y-1.5 border-t border-white/15 pt-5 text-center text-xs leading-normal ${muted}`}>
+        <div className={`mt-8 space-y-1.5 pt-5 text-center text-xs leading-normal ${muted}`}>
+          <SectionRule className="mb-5 bg-white/20" />
           <p>Po–Pá 8:00–17:00</p>
           <p className="mx-auto max-w-3xl">
             Služby dočasného výkupu nemovitostí a vozidel s možností zpětného odkupu. Nejedná se o spotřebitelský úvěr.

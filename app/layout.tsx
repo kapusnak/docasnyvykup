@@ -36,17 +36,17 @@ export const metadata: Metadata = {
     description: siteDescription,
     type: "website",
     locale: "cs_CZ",
-    images: [{ url: "/og-docasnyvykup.jpg", width: 1200, height: 630, alt: "Dočasný výkup" }],
+    images: [{ url: "/og-docasnyvykup.webp", width: 1200, height: 630, alt: "Dočasný výkup", type: "image/webp" }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/og-docasnyvykup.jpg"],
+    images: ["/og-docasnyvykup.webp"],
   },
   icons: {
-    icon: [{ url: "/cropped-docasnyvykup-logo-circled.png", sizes: "512x512", type: "image/png" }],
-    apple: "/cropped-docasnyvykup-logo-circled.png",
+    icon: [{ url: "/cropped-docasnyvykup-logo-circled.webp", sizes: "512x512", type: "image/webp" }],
+    apple: "/cropped-docasnyvykup-logo-circled.webp",
   },
 }
 
