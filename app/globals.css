@@ -44,6 +44,18 @@
   body {
     @apply bg-[var(--color-background)] text-[var(--color-foreground)] antialiased text-sm leading-snug md:text-base;
   }
+
+  /*
+   * iOS Safari zooms the viewport when a focused control’s font size is below 16px.
+   * Preflight sets inputs to font-size: 100%, so they inherit body text-sm (~14px) on small screens.
+   */
+  @media (max-width: 1023px) {
+    input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select {
+      font-size: max(1rem, 16px);
+    }
+  }
 }
 
 /* Dense body copy — use site-wide for consistent rhythm (leading-snug, sm→md step) */

@@ -29,11 +29,15 @@ import {
   snapToCarValue,
   snapToRealEstateValue,
 } from "@/lib/lead-form-scales"
-import { formatPhoneDisplay, parsePhoneDigits, toFullPhone } from "@/lib/phone-420"
+import { PhoneDigitsInput } from "@/components/phone-digits-input"
+import { toFullPhone } from "@/lib/phone-420"
 import { cn } from "@/lib/utils"
 
 const inputClass =
   "h-12 w-full rounded-xl border border-[#cfcabe] bg-white px-4 text-base text-[var(--color-foreground)] shadow-sm outline-none transition-[box-shadow] focus:ring-2 focus:ring-[var(--color-primary)]"
+
+const phoneInputWrapperClass =
+  "h-12 w-full rounded-xl border border-[#cfcabe] bg-white px-4 text-base text-[var(--color-foreground)] shadow-sm outline-none transition-[box-shadow] focus-within:ring-2 focus-within:ring-[var(--color-primary)]"
 
 const serviceTypeEnum = z.enum(["zpetny-leasing", "zastava", "primy-vykup", "bez-zajisteni"])
 
@@ -258,7 +262,7 @@ export function LeadForm() {
       toast.success("Děkujeme za poptávku", {
         id: "lead-form-success",
         description: "Brzy vás budeme kontaktovat. Zkontrolujte prosím i složku s nevyžádanou poštou.",
-        duration: 8000,
+        duration: 5000,
       })
       const emailKeep = values.email
       const phoneKeep = values.phoneDigits
@@ -443,15 +447,12 @@ export function LeadForm() {
                 name="phoneDigits"
                 control={form.control}
                 render={({ field }) => (
-                  <input
+                  <PhoneDigitsInput
                     id="lead-phone-nem"
-                    type="tel"
-                    inputMode="numeric"
-                    autoComplete="tel"
-                    placeholder="+420 777 400 256"
-                    className={inputClass}
-                    value={formatPhoneDisplay(field.value)}
-                    onChange={(e) => field.onChange(parsePhoneDigits(e.target.value))}
+                    className={phoneInputWrapperClass}
+                    inputClassName="placeholder:text-[var(--color-muted)]"
+                    value={field.value}
+                    onChange={field.onChange}
                     onBlur={field.onBlur}
                   />
                 )}
@@ -624,15 +625,12 @@ export function LeadForm() {
                 name="phoneDigits"
                 control={form.control}
                 render={({ field }) => (
-                  <input
+                  <PhoneDigitsInput
                     id="lead-phone-voz"
-                    type="tel"
-                    inputMode="numeric"
-                    autoComplete="tel"
-                    placeholder="+420"
-                    className={inputClass}
-                    value={formatPhoneDisplay(field.value)}
-                    onChange={(e) => field.onChange(parsePhoneDigits(e.target.value))}
+                    className={phoneInputWrapperClass}
+                    inputClassName="placeholder:text-[var(--color-muted)]"
+                    value={field.value}
+                    onChange={field.onChange}
                     onBlur={field.onBlur}
                   />
                 )}
