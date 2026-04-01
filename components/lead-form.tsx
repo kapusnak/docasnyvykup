@@ -6,7 +6,8 @@ import { usePathname, useSearchParams } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, Controller } from "react-hook-form"
 import { z } from "zod"
-import { Building2, Car, Loader2, Lock, TrendingUp } from "lucide-react"
+import { Building2, Car, Check, Loader2, Lock, TrendingUp } from "lucide-react"
+import { toast } from "sonner"
 
 import { Slider } from "@/components/ui/slider"
 import { SliderTouchLock } from "@/components/slider-touch-lock"
@@ -221,6 +222,7 @@ export function LeadForm() {
   const valueIndexCar = carAmountToIndex(vehicleAmountCzk)
 
   const onSubmit = async (values: LeadFormValues) => {
+    if (status === "success") return
     const phone = toFullPhone(values.phoneDigits)
     if (!phone) return
     setStatus("sending")
@@ -253,6 +255,11 @@ export function LeadForm() {
         serviceType,
       })
       setStatus("success")
+      toast.success("Děkujeme za poptávku", {
+        id: "lead-form-success",
+        description: "Brzy vás budeme kontaktovat. Zkontrolujte prosím i složku s nevyžádanou poštou.",
+        duration: 8000,
+      })
       const emailKeep = values.email
       const phoneKeep = values.phoneDigits
       if (values.assetMode === "nemovitosti") {
@@ -273,8 +280,18 @@ export function LeadForm() {
           ...emptyVozidloFields(),
         })
       }
-    } catch {
+    } catch (e) {
       setStatus("error")
+      const hint = e instanceof Error ? e.message.trim() : ""
+      const description =
+        hint.length > 0 && hint.length <= 220
+          ? hint
+          : "Zkuste to prosím znovu nebo nás kontaktujte telefonicky. Podrobnosti jsou v konzoli prohlížeče (F12)."
+      toast.error("Odeslání se nepovedlo", {
+        id: "lead-form-error",
+        description,
+        duration: 9000,
+      })
     }
   }
 
@@ -654,26 +671,26 @@ export function LeadForm() {
         </div>
       )}
 
-      {status === "error" && (
-        <p className="text-body text-red-600" role="alert">
-          Odeslání se nepovedlo. Zkuste to prosím znovu nebo nás kontaktujte telefonicky.
-        </p>
-      )}
-      {status === "success" && (
-        <p className="text-body text-[var(--color-primary)]" role="status">
-          Děkujeme! Brzy vás budeme kontaktovat.
-        </p>
-      )}
-
       <button
         type="submit"
-        disabled={status === "sending"}
-        className="flex h-12 min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-cta)] text-base font-semibold text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-cta-hover)] disabled:opacity-70"
+        disabled={status === "sending" || status === "success"}
+        aria-busy={status === "sending"}
+        className={cn(
+          "flex h-12 min-h-[48px] w-full items-center justify-center gap-2 rounded-xl text-base font-semibold transition-all disabled:pointer-events-none",
+          status === "success"
+            ? "border-2 border-[var(--color-primary)]/20 bg-[var(--color-primary)]/[0.07] text-[var(--color-primary)] shadow-none"
+            : "bg-[var(--color-cta)] text-[var(--color-foreground)] hover:bg-[var(--color-cta-hover)] disabled:opacity-[0.65]",
+        )}
       >
         {status === "sending" ? (
           <>
-            <Loader2 className="h-5 w-5 animate-spin" aria-hidden />
+            <Loader2 className="h-5 w-5 shrink-0 animate-spin" aria-hidden />
             Odesílám…
+          </>
+        ) : status === "success" ? (
+          <>
+            <Check className="h-5 w-5 shrink-0 stroke-[2.5]" aria-hidden />
+            Poptávka odeslána
           </>
         ) : (
           "Odeslat nezávaznou poptávku zdarma"

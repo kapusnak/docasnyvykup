@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Cardo, Inter } from "next/font/google"
 
+import { AppToaster } from "@/components/app-toaster"
 import { GoogleAnalytics } from "@/components/google-analytics"
 
 import "./globals.css"
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="cs" className={`${inter.variable} ${cardo.variable}`}>
       <body className="min-h-screen font-sans">
         <GoogleAnalytics />
+        <AppToaster />
         {children}
       </body>
     </html>
