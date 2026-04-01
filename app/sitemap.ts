@@ -9,6 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${base}/`, lastModified, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/ochrana-osobnich-udaju`, lastModified, changeFrequency: "yearly", priority: 0.4 },
+    { url: `${base}/ochrana-osobnich-udaju-nemovitosti`, lastModified, changeFrequency: "yearly", priority: 0.4 },
+    { url: `${base}/prohlaseni-o-ochrane-osobnich-udaju-vozidla`, lastModified, changeFrequency: "yearly", priority: 0.4 },
     { url: `${base}/zasady-cookies`, lastModified, changeFrequency: "yearly", priority: 0.4 },
   ]
 }

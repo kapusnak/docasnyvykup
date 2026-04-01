@@ -6,12 +6,11 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 
 export const metadata: Metadata = {
-  title: "Ochrana osobních údajů – nemovitosti",
-  description:
-    "Prohlášení o ochraně osobních údajů pro službu dočasného výkupu nemovitostí – Dočasný výkup s.r.o.",
+  title: "Ochrana osobních údajů – vozidla",
+  description: "Prohlášení o ochraně osobních údajů pro službu dočasného výkupu vozidel – Zdeněk Kapušňák, IČ 67020283.",
 }
 
-export default function OchranaOsobnichUdajuNemovitostiPage() {
+export default function ProhlaseniOchranaVozidlaPage() {
   return (
     <>
       <Header />
@@ -19,7 +18,7 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
         <section className="bg-[var(--color-primary)] pb-12 pt-10 md:pb-16 md:pt-14">
           <Container>
             <h1 className="text-center font-[family-name:var(--font-cardo)] text-3xl font-bold leading-tight text-white md:text-4xl">
-              Prohlášení o ochraně osobních údajů – nemovitosti
+              Prohlášení o ochraně osobních údajů – vozidla
             </h1>
           </Container>
         </section>
@@ -30,9 +29,9 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
               <h2 className="mt-0 text-xl font-bold leading-tight md:text-2xl">1. Úvod</h2>
               <p className="mt-3 text-body-muted">
                 Tento dokument obsahuje informace o tom, jak subjekt{" "}
-                <strong className="text-[var(--color-foreground)]">Dočasný výkup s.r.o.</strong>, IČ: 23626836, se sídlem Podvesná
-                VII/6192, 760 01 Zlín (dále jen „Provozovatel“ nebo „my“), jako správce osobních údajů, zpracovává vaše osobní údaje v
-                souladu s nařízením (EU) 2016/679 (<em>GDPR</em>) a dalšími platnými právními předpisy.
+                <strong className="text-[var(--color-foreground)]">Zdeněk Kapušňák</strong>, IČ: 67020283, se sídlem Podvesná VII/2046, 760
+                01 Zlín (dále jen „Provozovatel“ nebo „my“), jako správce osobních údajů, zpracovává vaše osobní údaje v souladu s
+                nařízením (EU) 2016/679 (<em>GDPR</em>) a dalšími platnými právními předpisy.
               </p>
               <p className="mt-3 text-body-muted">
                 Cílem těchto zásad je poskytnout vám jasné informace o tom, jaké osobní údaje shromažďujeme, za jakým účelem, jak s nimi
@@ -47,7 +46,11 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
                 <li>Jméno a příjmení</li>
                 <li>E-mailová adresa</li>
                 <li>Telefonní číslo</li>
-                <li>Typ nemovitosti</li>
+                <li>Značka a model vozu</li>
+                <li>Rok výroby vozu</li>
+                <li>Počet najetých kilometrů</li>
+                <li>Požadovaná částka</li>
+                <li>Požadovaná délka smlouvy</li>
               </ul>
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">3. Jak vaše údaje získáváme</h2>
@@ -71,7 +74,8 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">4. Účely a právní základ zpracování</h2>
               <p className="mt-3 text-body-muted">
-                Vaše údaje slouží k posouzení a vyřízení poptávky na službu dočasného výkupu nemovitosti a ke komunikaci s vámi.
+                Vaše údaje slouží výhradně k předání poptávky smluvnímu partnerovi Provozovatele – společnosti Car Service Partner s.r.o.,
+                která zajistí vyřízení nabídky dočasného výkupu vozidla.
               </p>
               <p className="mt-3 text-body-muted">Vaše osobní údaje zpracováváme na základě:</p>
               <ul className="mt-3 list-disc space-y-1.5 pl-6 text-body-muted">
@@ -86,6 +90,24 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
               </ul>
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">5. Předání osobních údajů třetím stranám</h2>
+              <p className="mt-3 text-body-muted">
+                Zadané údaje jsou předány výhradně smluvnímu partnerovi Provozovatele:
+              </p>
+              <p className="mt-3 font-semibold text-[var(--color-foreground)]">Car Service Partner s.r.o.</p>
+              <ul className="mt-2 list-none space-y-1 text-body-muted">
+                <li>Sídlo: Na Poříčí 1071/17, Nové Město, 110 00 Praha 1</li>
+                <li>IČ: 06143911</li>
+                <li>
+                  E-mail:{" "}
+                  <a href="mailto:info@cash4car.cz" className="text-[var(--color-primary)] underline-offset-2 hover:underline">
+                    info@cash4car.cz
+                  </a>
+                </li>
+              </ul>
+              <p className="mt-3 text-body-muted">
+                Car Service Partner s.r.o. je naším důvěryhodným obchodním partnerem, který se řídí vlastními zásadami ochrany osobních
+                údajů.
+              </p>
               <p className="mt-3 text-body-muted">
                 Údaje nejsou dále poskytovány třetím osobám, s výjimkou případů, kdy to ukládá zákon.
               </p>
@@ -161,8 +183,8 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
               </p>
               <p className="mt-3 text-body-muted">
                 📞{" "}
-                <a href="tel:+420776075150" className="text-[var(--color-primary)] underline-offset-2 hover:underline">
-                  +420 776 075 150
+                <a href="tel:+420777400256" className="text-[var(--color-primary)] underline-offset-2 hover:underline">
+                  +420 777 400 256
                 </a>
                 <br />
                 📧{" "}

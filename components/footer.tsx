@@ -49,7 +49,7 @@ export function Footer() {
               </p>
               <ul className={`${bodySm} space-y-0.5`}>
                 <li>
-                  <Link href="/ochrana-osobnich-udaju" className={linkSubtle}>
+                  <Link href="/ochrana-osobnich-udaju-nemovitosti" className={linkSubtle}>
                     Ochrana osobních údajů
                   </Link>
                 </li>
@@ -115,7 +115,7 @@ export function Footer() {
             </div>
             <ul className={`${bodySm} space-y-0.5`}>
               <li>
-                <Link href="/ochrana-osobnich-udaju" className={linkSubtle}>
+                <Link href="/prohlaseni-o-ochrane-osobnich-udaju-vozidla" className={linkSubtle}>
                   Ochrana osobních údajů
                 </Link>
               </li>

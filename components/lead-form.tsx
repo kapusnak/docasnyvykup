@@ -12,15 +12,20 @@ import { Slider } from "@/components/ui/slider"
 import { SliderTouchLock } from "@/components/slider-touch-lock"
 import { sendInquiry } from "@/lib/emailjs"
 import {
+  CAR_AMOUNT_VALUES,
+  CAR_RANGE,
+  DEFAULT_CAR_AMOUNT,
   DEFAULT_REAL_ESTATE_AMOUNT,
   REAL_ESTATE_AMOUNT_VALUES,
   REAL_ESTATE_RANGE,
   SOCIAL_PROOF_FALLBACK,
+  carAmountToIndex,
   formatAmountKc,
   formatRangeLabelKc,
   getSocialProofText,
   realEstateAmountToIndex,
   realEstateServices,
+  snapToCarValue,
   snapToRealEstateValue,
 } from "@/lib/lead-form-scales"
 import { formatPhoneDisplay, parsePhoneDigits, toFullPhone } from "@/lib/phone-420"
@@ -45,8 +50,7 @@ const leadFormSchema = z
     year: z.string(),
     mileage: z.string(),
     vin: z.string(),
-    requestedAmount: z.string(),
-    contractLength: z.string(),
+    vehicleAmountCzk: z.number(),
   })
   .superRefine((data, ctx) => {
     if (!z.string().email().safeParse(data.email).success) {
@@ -84,6 +88,9 @@ const leadFormSchema = z
       if (data.mileage.trim().length < 1) {
         ctx.addIssue({ code: "custom", message: "Zadejte počet kilometrů.", path: ["mileage"] })
       }
+      if (data.vehicleAmountCzk < CAR_RANGE.min || data.vehicleAmountCzk > CAR_RANGE.max) {
+        ctx.addIssue({ code: "custom", message: "Neplatná částka.", path: ["vehicleAmountCzk"] })
+      }
     }
   })
 
@@ -97,8 +104,7 @@ function emptyVozidloFields() {
     year: "",
     mileage: "",
     vin: "",
-    requestedAmount: "",
-    contractLength: "",
+    vehicleAmountCzk: snapToCarValue(DEFAULT_CAR_AMOUNT),
   }
 }
 
@@ -132,8 +138,7 @@ function buildVozidloMessage(v: LeadFormValues, pagePath: string): string {
     `Počet najetých kilometrů: ${v.mileage.trim()}`,
   ]
   if (v.vin.trim()) lines.push(`VIN: ${v.vin.trim()}`)
-  if (v.requestedAmount.trim()) lines.push(`Požadovaná částka: ${v.requestedAmount.trim()}`)
-  if (v.contractLength.trim()) lines.push(`Délka smlouvy: ${v.contractLength.trim()}`)
+  lines.push(`Požadovaná částka: ${formatAmountKc(snapToCarValue(v.vehicleAmountCzk))}`)
   lines.push("", `Stránka: ${pagePath}`)
   return lines.join("\n")
 }
@@ -173,6 +178,7 @@ export function LeadForm() {
 
   const assetMode = form.watch("assetMode")
   const amountCzk = form.watch("amountCzk")
+  const vehicleAmountCzk = form.watch("vehicleAmountCzk")
 
   useEffect(() => {
     setSocialProofText(getSocialProofText())
@@ -238,6 +244,8 @@ export function LeadForm() {
 
   const maxIdx = REAL_ESTATE_AMOUNT_VALUES.length - 1
   const valueIndex = realEstateAmountToIndex(amountCzk)
+  const maxIdxCar = CAR_AMOUNT_VALUES.length - 1
+  const valueIndexCar = carAmountToIndex(vehicleAmountCzk)
 
   const onSubmit = async (values: LeadFormValues) => {
     const phone = toFullPhone(values.phoneDigits)
@@ -472,9 +480,32 @@ export function LeadForm() {
               <p className="mt-1 text-sm text-red-600">{form.formState.errors.email.message}</p>
             )}
           </div>
+
+          <p className="text-center text-xs leading-snug text-[var(--color-muted)]">
+            Odesláním souhlasíte se zpracováním osobních údajů dle{" "}
+            <Link
+              href="/ochrana-osobnich-udaju-nemovitosti"
+              className="italic text-[var(--color-primary)] underline-offset-2 hover:underline"
+            >
+              zásad ochrany osobních údajů
+            </Link>
+            .
+          </p>
         </>
       ) : (
         <div className="space-y-4 md:space-y-5">
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-foreground)]/12 bg-[var(--color-cta)] px-3 py-1.5 shadow-sm">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-primary)]/45 opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--color-primary)] ring-2 ring-white/70" />
+              </span>
+              <span className="text-xs font-semibold text-[var(--color-foreground)]">
+                Konzultanti k dispozici • Ozveme se brzy
+              </span>
+            </div>
+          </div>
+
           <div>
             <label htmlFor="lead-model" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">
               Značka a model vozu {requiredStar}
@@ -517,21 +548,55 @@ export function LeadForm() {
             <p className="mt-1 text-xs text-[var(--color-muted)]">Např. TMBJF7CN0S123456</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
-            <div>
-              <label htmlFor="lead-req-amt" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">
+          <div className="space-y-2">
+            <div className="flex items-center justify-between gap-2">
+              <label htmlFor="lead-vehicle-amount-slider" className="text-body font-medium text-[var(--color-muted)]">
                 Požadovaná částka
               </label>
-              <input id="lead-req-amt" className={inputClass} {...form.register("requestedAmount")} />
-              <p className="mt-1 text-xs text-[var(--color-muted)]">Např. 80 000 Kč</p>
+              <span className="text-base font-semibold text-[var(--color-primary)]">
+                {formatAmountKc(snapToCarValue(vehicleAmountCzk))}
+              </span>
             </div>
-            <div>
-              <label htmlFor="lead-contract" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">
-                Délka smlouvy
-              </label>
-              <input id="lead-contract" className={inputClass} {...form.register("contractLength")} />
-              <p className="mt-1 text-xs text-[var(--color-muted)]">Např. 6 měsíců</p>
+            <SliderTouchLock
+              minIndex={0}
+              maxIndex={maxIdxCar}
+              valueIndex={valueIndexCar}
+              onValueChange={(i) =>
+                form.setValue("vehicleAmountCzk", CAR_AMOUNT_VALUES[i], { shouldValidate: true })
+              }
+            >
+              <Slider
+                id="lead-vehicle-amount-slider"
+                value={[valueIndexCar]}
+                onValueChange={([i]) =>
+                  form.setValue("vehicleAmountCzk", CAR_AMOUNT_VALUES[i], { shouldValidate: true })
+                }
+                min={0}
+                max={maxIdxCar}
+                step={1}
+                className="w-full"
+                aria-label="Požadovaná částka"
+              />
+            </SliderTouchLock>
+            <div className="flex justify-between text-xs text-[var(--color-muted)]">
+              <span>{formatRangeLabelKc(CAR_RANGE.min)}</span>
+              <span>{formatRangeLabelKc(CAR_RANGE.max)}</span>
             </div>
+            <Controller
+              name="vehicleAmountCzk"
+              control={form.control}
+              render={({ field }) => <input type="hidden" {...field} value={field.value} readOnly />}
+            />
+          </div>
+
+          <div className="flex items-center gap-2 rounded-lg border border-[var(--color-primary)]/22 bg-[var(--color-accent-warm)] px-2.5 py-1.5">
+            <div
+              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[var(--color-primary)]/12"
+              aria-hidden
+            >
+              <TrendingUp className="h-3.5 w-3.5 text-[var(--color-primary)]" strokeWidth={2.25} />
+            </div>
+            <p className="text-xs font-medium leading-snug text-[var(--color-foreground)]">{socialProofText}</p>
           </div>
 
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
@@ -596,19 +661,19 @@ export function LeadForm() {
               )}
             </div>
           </div>
+
+          <p className="text-center text-xs leading-snug text-[var(--color-muted)]">
+            Odesláním souhlasíte se zpracováním osobních údajů dle{" "}
+            <Link
+              href="/prohlaseni-o-ochrane-osobnich-udaju-vozidla"
+              className="italic text-[var(--color-primary)] underline-offset-2 hover:underline"
+            >
+              zásad ochrany osobních údajů
+            </Link>
+            .
+          </p>
         </div>
       )}
-
-      <p className="text-center text-xs leading-snug text-[var(--color-muted)]">
-        Odesláním souhlasíte se zpracováním osobních údajů dle{" "}
-        <Link
-          href="/ochrana-osobnich-udaju"
-          className="italic text-[var(--color-primary)] underline-offset-2 hover:underline"
-        >
-          zásad ochrany osobních údajů
-        </Link>
-        .
-      </p>
 
       {status === "error" && (
         <p className="text-body text-red-600" role="alert">
@@ -632,7 +697,7 @@ export function LeadForm() {
             Odesílám…
           </>
         ) : (
-          "Odeslat poptávku"
+          "Odeslat nezávaznou poptávku zdarma"
         )}
       </button>
 
