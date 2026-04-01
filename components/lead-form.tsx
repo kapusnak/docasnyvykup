@@ -10,7 +10,7 @@ import { Building2, Car, Loader2, Lock, TrendingUp } from "lucide-react"
 
 import { Slider } from "@/components/ui/slider"
 import { SliderTouchLock } from "@/components/slider-touch-lock"
-import { sendInquiry } from "@/lib/emailjs"
+import { sendLead } from "@/lib/emailjs"
 import {
   CAR_AMOUNT_VALUES,
   CAR_RANGE,
@@ -114,33 +114,6 @@ function emptyNemovitostiFields() {
     serviceType: "zpetny-leasing" as LeadFormValues["serviceType"],
     amountCzk: snapToRealEstateValue(DEFAULT_REAL_ESTATE_AMOUNT),
   }
-}
-
-function buildNemovitostiMessage(
-  serviceLabel: string,
-  amountFormatted: string,
-  pagePath: string,
-): string {
-  return [
-    "[Režim: Nemovitost]",
-    `Typ služby: ${serviceLabel}`,
-    `Požadovaná částka: ${amountFormatted}`,
-    "",
-    `Stránka: ${pagePath}`,
-  ].join("\n")
-}
-
-function buildVozidloMessage(v: LeadFormValues, pagePath: string): string {
-  const lines = [
-    "[Režim: Vozidlo]",
-    `Značka a model: ${v.vehicleModel.trim()}`,
-    `Rok výroby: ${v.year.trim()}`,
-    `Počet najetých kilometrů: ${v.mileage.trim()}`,
-  ]
-  if (v.vin.trim()) lines.push(`VIN: ${v.vin.trim()}`)
-  lines.push(`Požadovaná částka: ${formatAmountKc(snapToCarValue(v.vehicleAmountCzk))}`)
-  lines.push("", `Stránka: ${pagePath}`)
-  return lines.join("\n")
 }
 
 /** Query `mode` wins over section hash (#vozidla / #nemovitosti). #formular alone does not imply a mode. */
@@ -254,24 +227,30 @@ export function LeadForm() {
     try {
       const pagePath = pathname ?? ""
       let name: string
-      let message: string
+      let amount: number
+      let assetType: string
+      let serviceType: string
       if (values.assetMode === "nemovitosti") {
         name = values.name.trim()
-        const serviceLabel =
+        amount = snapToRealEstateValue(values.amountCzk)
+        assetType = "Nemovitost"
+        serviceType =
           realEstateServices.find((s) => s.value === values.serviceType)?.label ?? values.serviceType
-        const amountFormatted = formatAmountKc(snapToRealEstateValue(values.amountCzk))
-        message = buildNemovitostiMessage(serviceLabel, amountFormatted, pagePath)
       } else {
         name = `${values.firstName.trim()} ${values.lastName.trim()}`.trim()
-        message = buildVozidloMessage(values, pagePath)
+        amount = snapToCarValue(values.vehicleAmountCzk)
+        assetType = "Automobil"
+        const vinPart = values.vin.trim() ? `, VIN ${values.vin.trim()}` : ""
+        serviceType = `Peníze ihned a jezděte dál — ${values.vehicleModel.trim()}, r.v. ${values.year.trim()}, ${values.mileage.trim()} km${vinPart}`
       }
-      await sendInquiry({
-        source: "form",
-        name,
-        email: values.email.trim(),
+      await sendLead({
+        source: "calculator",
         phone,
-        message,
-        pagePath,
+        email: values.email.trim() || undefined,
+        name,
+        amount,
+        assetType,
+        serviceType,
       })
       setStatus("success")
       const emailKeep = values.email
