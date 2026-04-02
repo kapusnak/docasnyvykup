@@ -183,8 +183,8 @@ export default function ProhlaseniOchranaVozidlaPage() {
               </p>
               <p className="mt-3 text-body-muted">
                 📞{" "}
-                <a href="tel:+420777400256" className="text-[var(--color-primary)] underline-offset-2 hover:underline">
-                  +420 777 400 256
+                <a href="tel:+420776680720" className="text-[var(--color-primary)] underline-offset-2 hover:underline">
+                  +420 776 680 720
                 </a>
                 <br />
                 📧{" "}

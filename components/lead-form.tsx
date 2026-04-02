@@ -451,6 +451,7 @@ export function LeadForm() {
                     id="lead-phone-nem"
                     className={phoneInputWrapperClass}
                     inputClassName="placeholder:text-[var(--color-muted)]"
+                    placeholder=""
                     value={field.value}
                     onChange={field.onChange}
                     onBlur={field.onBlur}

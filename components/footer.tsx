@@ -73,8 +73,8 @@ export function Footer() {
             <div className={`${bodySm} space-y-0.5`}>
               <p>
                 <span className={muted}>Telefon: </span>
-                <a href="tel:+420777400256" className={telLink}>
-                  +420 777 400 256
+                <a href="tel:+420776680720" className={telLink}>
+                  +420 776 680 720
                 </a>
               </p>
               <p>

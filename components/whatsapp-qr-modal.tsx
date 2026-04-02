@@ -12,7 +12,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
   )
 }
 
-const WA_FALLBACK = "https://wa.me/420777400256"
+const WA_FALLBACK = "https://wa.me/420776680720"
 
 type Props = {
   buttonClassName?: string
