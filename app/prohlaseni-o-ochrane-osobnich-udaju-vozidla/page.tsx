@@ -126,7 +126,8 @@ export default function ProhlaseniOchranaVozidlaPage() {
                   návštěvnosti),
                 </li>
                 <li>
-                  <strong className="text-[var(--color-foreground)]">Reklamní cookies</strong> – Seznam Sklik (retargeting),
+                  <strong className="text-[var(--color-foreground)]">Reklamní cookies</strong> – Seznam Sklik (retargeting) a Google Ads
+                  (cílení reklamy a remarketing),
                 </li>
                 <li>
                   <strong className="text-[var(--color-foreground)]">Funkční cookies</strong> – zajišťující správné fungování formuláře.

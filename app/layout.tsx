@@ -2,7 +2,9 @@ import type { Metadata } from "next"
 import { Cardo, Inter } from "next/font/google"
 
 import { AppToaster } from "@/components/app-toaster"
+import { GoogleAdsGtag } from "@/components/google-ads-gtag"
 import { GoogleAnalytics } from "@/components/google-analytics"
+import { GoogleTagManager } from "@/components/google-tag-manager"
 
 import "./globals.css"
 
@@ -55,9 +57,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="cs" className={`${inter.variable} ${cardo.variable}`}>
       <body className="min-h-screen font-sans">
+        <GoogleTagManager />
+        <GoogleAdsGtag />
+        {children}
         <GoogleAnalytics />
         <AppToaster />
-        {children}
       </body>
     </html>
   )

@@ -51,7 +51,8 @@ export default function ZasadyCookiesPage() {
                   souhlasu).
                 </li>
                 <li>
-                  <strong className="text-[var(--color-foreground)]">Marketingové</strong> – např. remarketing (pouze po souhlasu).
+                  <strong className="text-[var(--color-foreground)]">Marketingové</strong> – např. Seznam Sklik (retargeting) a Google Ads
+                  (cílení reklamy, remarketing a měření konverzí) (pouze po souhlasu).
                 </li>
               </ul>
 
