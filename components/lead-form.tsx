@@ -630,6 +630,7 @@ export function LeadForm() {
                     id="lead-phone-voz"
                     className={phoneInputWrapperClass}
                     inputClassName="placeholder:text-[var(--color-muted)]"
+                    placeholder=""
                     value={field.value}
                     onChange={field.onChange}
                     onBlur={field.onBlur}
@@ -692,7 +693,7 @@ export function LeadForm() {
             Poptávka odeslána
           </>
         ) : (
-          "Odeslat nezávaznou poptávku zdarma"
+          "Odeslat nezávaznou poptávku"
         )}
       </button>
 
