@@ -11,7 +11,7 @@
 
 2. **Proměnné prostředí**
 
-   Před buildem nastavte v prostředí nebo v `.env.local` hodnoty z `.env.example` (EmailJS, `NEXT_PUBLIC_SITE_URL`). Hodnoty `NEXT_PUBLIC_*` se vkládají do klienta už při buildu.
+   Před buildem nastavte v prostředí nebo v `.env.local` hodnoty z `.env.example` (EmailJS, `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_GTM_ID` pro Google Tag Manager). Hodnoty `NEXT_PUBLIC_*` se vkládají do klienta už při buildu.
 
 3. **Nahrání na hosting**
 

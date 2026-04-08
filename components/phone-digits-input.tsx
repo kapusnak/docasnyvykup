@@ -27,7 +27,7 @@ export const PhoneDigitsInput = forwardRef<HTMLInputElement, PhoneDigitsInputPro
       inputClassName,
       prefixClassName,
       onFocus,
-      placeholder = "776 680 720",
+      placeholder = "",
       ...rest
     },
     ref,

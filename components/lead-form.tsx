@@ -152,6 +152,7 @@ export function LeadForm() {
     resolver: zodResolver(leadFormSchema),
     defaultValues,
     mode: "onSubmit",
+    reValidateMode: "onSubmit",
   })
 
   const assetMode = form.watch("assetMode")
@@ -388,13 +389,13 @@ export function LeadForm() {
               minIndex={0}
               maxIndex={maxIdx}
               valueIndex={valueIndex}
-              onValueChange={(i) => form.setValue("amountCzk", REAL_ESTATE_AMOUNT_VALUES[i], { shouldValidate: true })}
+              onValueChange={(i) => form.setValue("amountCzk", REAL_ESTATE_AMOUNT_VALUES[i])}
             >
               <Slider
                 id="lead-amount-slider"
                 value={[valueIndex]}
                 onValueChange={([i]) =>
-                  form.setValue("amountCzk", REAL_ESTATE_AMOUNT_VALUES[i], { shouldValidate: true })
+                  form.setValue("amountCzk", REAL_ESTATE_AMOUNT_VALUES[i])
                 }
                 min={0}
                 max={maxIdx}
@@ -451,7 +452,6 @@ export function LeadForm() {
                     id="lead-phone-nem"
                     className={phoneInputWrapperClass}
                     inputClassName="placeholder:text-[var(--color-muted)]"
-                    placeholder=""
                     value={field.value}
                     onChange={field.onChange}
                     onBlur={field.onBlur}
@@ -560,14 +560,14 @@ export function LeadForm() {
               maxIndex={maxIdxCar}
               valueIndex={valueIndexCar}
               onValueChange={(i) =>
-                form.setValue("vehicleAmountCzk", CAR_AMOUNT_VALUES[i], { shouldValidate: true })
+                form.setValue("vehicleAmountCzk", CAR_AMOUNT_VALUES[i])
               }
             >
               <Slider
                 id="lead-vehicle-amount-slider"
                 value={[valueIndexCar]}
                 onValueChange={([i]) =>
-                  form.setValue("vehicleAmountCzk", CAR_AMOUNT_VALUES[i], { shouldValidate: true })
+                  form.setValue("vehicleAmountCzk", CAR_AMOUNT_VALUES[i])
                 }
                 min={0}
                 max={maxIdxCar}
@@ -630,7 +630,6 @@ export function LeadForm() {
                     id="lead-phone-voz"
                     className={phoneInputWrapperClass}
                     inputClassName="placeholder:text-[var(--color-muted)]"
-                    placeholder=""
                     value={field.value}
                     onChange={field.onChange}
                     onBlur={field.onBlur}

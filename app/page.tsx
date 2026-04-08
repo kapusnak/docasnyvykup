@@ -179,8 +179,8 @@ export default function HomePage() {
                         title: "Nezávazná konzultace",
                         body: (
                           <>
-                            <ZavolejteTelLink>Zavolejte</ZavolejteTelLink> nám nebo využijte náš{" "}
-                            <FormularInlineLink leadMode="nemovitosti">formulář</FormularInlineLink>
+                            Vyplňte online <FormularInlineLink leadMode="nemovitosti">formulář</FormularInlineLink> nebo nám{" "}
+                            <ZavolejteTelLink>zavolejte</ZavolejteTelLink>.
                           </>
                         ),
                       },
@@ -351,7 +351,10 @@ export default function HomePage() {
                         <>
                           Vyplňte online <FormularInlineLink variant="dark" leadMode="vozidlo">formulář</FormularInlineLink>{" "}
                           nebo nám{" "}
-                          <ZavolejteTelLink variant="dark">zavolejte</ZavolejteTelLink>.
+                          <ZavolejteTelLink variant="dark" telHref="tel:+420776680720" telDisplay="+420 776 680 720">
+                            zavolejte
+                          </ZavolejteTelLink>
+                          .
                         </>
                       ),
                     },

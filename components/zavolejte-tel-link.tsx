@@ -3,17 +3,26 @@ import { Phone } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const TEL_HREF = "tel:+420776075150"
-const TEL_DISPLAY = "+420 776 075 150"
+const DEFAULT_TEL_HREF = "tel:+420776075150"
+const DEFAULT_TEL_DISPLAY = "+420 776 075 150"
 
 type Props = {
   children: ReactNode
   /** Dark hero-style sections: light tooltip + pale underline */
   variant?: "cream" | "dark"
   className?: string
+  /** Override for vozidla vs nemovitosti contact lines */
+  telHref?: string
+  telDisplay?: string
 }
 
-export function ZavolejteTelLink({ children, variant = "cream", className }: Props) {
+export function ZavolejteTelLink({
+  children,
+  variant = "cream",
+  className,
+  telHref = DEFAULT_TEL_HREF,
+  telDisplay = DEFAULT_TEL_DISPLAY,
+}: Props) {
   const linkStyles =
     variant === "dark"
       ? "decoration-white/55 underline decoration-dashed underline-offset-[3px] transition-colors hover:decoration-white hover:text-white"
@@ -27,9 +36,9 @@ export function ZavolejteTelLink({ children, variant = "cream", className }: Pro
   return (
     <span className="relative inline group/zav">
       <a
-        href={TEL_HREF}
+        href={telHref}
         className={cn("font-medium", linkStyles, className)}
-        aria-label={`Zavolat ${TEL_DISPLAY}`}
+        aria-label={`Zavolat ${telDisplay}`}
       >
         {children}
       </a>
@@ -41,7 +50,7 @@ export function ZavolejteTelLink({ children, variant = "cream", className }: Pro
         role="tooltip"
       >
         <Phone className="h-3.5 w-3.5 shrink-0 opacity-90" aria-hidden />
-        {TEL_DISPLAY}
+        {telDisplay}
       </span>
     </span>
   )

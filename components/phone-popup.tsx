@@ -190,7 +190,6 @@ export function PhonePopup() {
                 prefixClassName="text-[var(--color-muted)]"
                 value={digits}
                 onChange={setDigits}
-                placeholder="776 680 720"
                 required
               />
             </div>
