@@ -611,6 +611,16 @@ export function LeadForm() {
             />
           </div>
 
+          <div className="flex items-center gap-2 rounded-lg border border-[var(--color-primary)]/22 bg-[var(--color-accent-warm)] px-2.5 py-1.5">
+            <div
+              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[var(--color-primary)]/12"
+              aria-hidden
+            >
+              <TrendingUp className="h-3.5 w-3.5 text-[var(--color-primary)]" strokeWidth={2.25} />
+            </div>
+            <p className="text-xs font-medium leading-snug text-[var(--color-foreground)]">{socialProofText}</p>
+          </div>
+
           <div>
             <label
               htmlFor="lead-contract-months"
@@ -635,16 +645,6 @@ export function LeadForm() {
                 {form.formState.errors.contractDurationMonths.message}
               </p>
             )}
-          </div>
-
-          <div className="flex items-center gap-2 rounded-lg border border-[var(--color-primary)]/22 bg-[var(--color-accent-warm)] px-2.5 py-1.5">
-            <div
-              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[var(--color-primary)]/12"
-              aria-hidden
-            >
-              <TrendingUp className="h-3.5 w-3.5 text-[var(--color-primary)]" strokeWidth={2.25} />
-            </div>
-            <p className="text-xs font-medium leading-snug text-[var(--color-foreground)]">{socialProofText}</p>
           </div>
 
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
