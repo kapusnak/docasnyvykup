@@ -50,7 +50,7 @@ export default function ProhlaseniOchranaVozidlaPage() {
                 <li>Rok výroby vozu</li>
                 <li>Počet najetých kilometrů</li>
                 <li>Požadovaná částka</li>
-                <li>Požadovaná délka smlouvy</li>
+                <li>Trvání smlouvy (měsíce)</li>
               </ul>
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">3. Jak vaše údaje získáváme</h2>

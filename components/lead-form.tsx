@@ -55,6 +55,7 @@ const leadFormSchema = z
     year: z.string(),
     mileage: z.string(),
     vin: z.string(),
+    contractDurationMonths: z.string(),
     vehicleAmountCzk: z.number(),
   })
   .superRefine((data, ctx) => {
@@ -96,6 +97,25 @@ const leadFormSchema = z
       if (data.vehicleAmountCzk < CAR_RANGE.min || data.vehicleAmountCzk > CAR_RANGE.max) {
         ctx.addIssue({ code: "custom", message: "Neplatná částka.", path: ["vehicleAmountCzk"] })
       }
+      const contractMonths = data.contractDurationMonths.trim()
+      if (contractMonths.length > 0) {
+        if (!/^\d+$/.test(contractMonths)) {
+          ctx.addIssue({
+            code: "custom",
+            message: "Zadejte počet měsíců jako celé číslo.",
+            path: ["contractDurationMonths"],
+          })
+        } else {
+          const n = Number.parseInt(contractMonths, 10)
+          if (n < 1 || n > 360) {
+            ctx.addIssue({
+              code: "custom",
+              message: "Zadejte počet měsíců v rozmezí 1–360.",
+              path: ["contractDurationMonths"],
+            })
+          }
+        }
+      }
     }
   })
 
@@ -109,6 +129,7 @@ function emptyVozidloFields() {
     year: "",
     mileage: "",
     vin: "",
+    contractDurationMonths: "",
     vehicleAmountCzk: snapToCarValue(DEFAULT_CAR_AMOUNT),
   }
 }
@@ -248,7 +269,10 @@ export function LeadForm() {
         amount = snapToCarValue(values.vehicleAmountCzk)
         assetType = "Automobil"
         const vinPart = values.vin.trim() ? `, VIN ${values.vin.trim()}` : ""
-        serviceType = `Peníze ihned a jezděte dál — ${values.vehicleModel.trim()}, r.v. ${values.year.trim()}, ${values.mileage.trim()} km${vinPart}`
+        const contractPart = values.contractDurationMonths.trim()
+          ? `, trvání smlouvy ${values.contractDurationMonths.trim()} měs.`
+          : ""
+        serviceType = `Peníze ihned a jezděte dál — ${values.vehicleModel.trim()}, r.v. ${values.year.trim()}, ${values.mileage.trim()} km${vinPart}${contractPart}`
       }
       await sendLead({
         source: "calculator",
@@ -585,6 +609,32 @@ export function LeadForm() {
               control={form.control}
               render={({ field }) => <input type="hidden" {...field} value={field.value} readOnly />}
             />
+          </div>
+
+          <div>
+            <label
+              htmlFor="lead-contract-months"
+              className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]"
+            >
+              Trvání smlouvy (měsíce)
+            </label>
+            <input
+              id="lead-contract-months"
+              inputMode="numeric"
+              autoComplete="off"
+              className={inputClass}
+              aria-invalid={Boolean(form.formState.errors.contractDurationMonths)}
+              aria-describedby={
+                form.formState.errors.contractDurationMonths ? "lead-contract-months-error" : undefined
+              }
+              {...form.register("contractDurationMonths")}
+            />
+            <p className="mt-1 text-xs text-[var(--color-muted)]">Např. 24</p>
+            {form.formState.errors.contractDurationMonths && (
+              <p id="lead-contract-months-error" className="mt-1 text-sm text-red-600">
+                {form.formState.errors.contractDurationMonths.message}
+              </p>
+            )}
           </div>
 
           <div className="flex items-center gap-2 rounded-lg border border-[var(--color-primary)]/22 bg-[var(--color-accent-warm)] px-2.5 py-1.5">
