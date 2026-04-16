@@ -6,7 +6,7 @@ import { usePathname, useSearchParams } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, Controller } from "react-hook-form"
 import { z } from "zod"
-import { Building2, Car, Check, Loader2, Lock, TrendingUp } from "lucide-react"
+import { Building2, Car, Check, Loader2, Lock } from "lucide-react"
 import { toast } from "sonner"
 
 import { Slider } from "@/components/ui/slider"
@@ -19,11 +19,9 @@ import {
   DEFAULT_REAL_ESTATE_AMOUNT,
   REAL_ESTATE_AMOUNT_VALUES,
   REAL_ESTATE_RANGE,
-  SOCIAL_PROOF_FALLBACK,
   carAmountToIndex,
   formatAmountKc,
   formatRangeLabelKc,
-  getSocialProofText,
   realEstateAmountToIndex,
   realEstateServices,
   snapToCarValue,
@@ -159,7 +157,6 @@ export function LeadForm() {
   const searchParams = useSearchParams()
   const modeQuery = searchParams.get("mode")
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
-  const [socialProofText, setSocialProofText] = useState(SOCIAL_PROOF_FALLBACK)
 
   const defaultValues: LeadFormValues = {
     assetMode: "nemovitosti",
@@ -179,10 +176,6 @@ export function LeadForm() {
   const assetMode = form.watch("assetMode")
   const amountCzk = form.watch("amountCzk")
   const vehicleAmountCzk = form.watch("vehicleAmountCzk")
-
-  useEffect(() => {
-    setSocialProofText(getSocialProofText())
-  }, [])
 
   useEffect(() => {
     const syncFromUrl = () => {
@@ -439,16 +432,6 @@ export function LeadForm() {
             />
           </div>
 
-          <div className="flex items-center gap-2 rounded-lg border border-[var(--color-primary)]/22 bg-[var(--color-accent-warm)] px-2.5 py-1.5">
-            <div
-              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[var(--color-primary)]/12"
-              aria-hidden
-            >
-              <TrendingUp className="h-3.5 w-3.5 text-[var(--color-primary)]" strokeWidth={2.25} />
-            </div>
-            <p className="text-xs font-medium leading-snug text-[var(--color-foreground)]">{socialProofText}</p>
-          </div>
-
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
             <div>
               <label htmlFor="lead-name" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">
@@ -609,16 +592,6 @@ export function LeadForm() {
               control={form.control}
               render={({ field }) => <input type="hidden" {...field} value={field.value} readOnly />}
             />
-          </div>
-
-          <div className="flex items-center gap-2 rounded-lg border border-[var(--color-primary)]/22 bg-[var(--color-accent-warm)] px-2.5 py-1.5">
-            <div
-              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[var(--color-primary)]/12"
-              aria-hidden
-            >
-              <TrendingUp className="h-3.5 w-3.5 text-[var(--color-primary)]" strokeWidth={2.25} />
-            </div>
-            <p className="text-xs font-medium leading-snug text-[var(--color-foreground)]">{socialProofText}</p>
           </div>
 
           <div>
