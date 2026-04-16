@@ -415,21 +415,9 @@ export default function HomePage() {
         <section id="formular" className="bg-[var(--color-surface-muted)] py-10 md:py-14 lg:py-20">
           <Container>
             <div className="mx-auto max-w-4xl rounded-2xl border border-black/5 bg-white px-6 py-8 md:px-12 md:py-14">
-              <h2 className="text-center font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight text-[var(--color-foreground)] md:text-3xl">
-                Nezávazná poptávka
-              </h2>
-              <p className="mt-3 text-center text-body-muted">
-                Vyplňte údaje a ozveme se vám co nejdříve. Nebo volejte{" "}
-                <a href="tel:+420776075150" className="font-semibold text-[var(--color-primary)]">
-                  +420 776 075 150
-                </a>
-                .
-              </p>
-              <div className="mt-8">
-                <Suspense fallback={null}>
-                  <LeadForm />
-                </Suspense>
-              </div>
+              <Suspense fallback={null}>
+                <LeadForm />
+              </Suspense>
             </div>
           </Container>
         </section>

@@ -31,6 +31,9 @@ import { PhoneDigitsInput } from "@/components/phone-digits-input"
 import { toFullPhone } from "@/lib/phone-420"
 import { cn } from "@/lib/utils"
 
+const LEAD_PHONE_NEMOVITOST = { href: "tel:+420776075150", label: "+420 776 075 150" } as const
+const LEAD_PHONE_VOZIDLO = { href: "tel:+420776680720", label: "+420 776 680 720" } as const
+
 const inputClass =
   "h-12 w-full rounded-xl border border-[#cfcabe] bg-white px-4 text-base text-[var(--color-foreground)] shadow-sm outline-none transition-[box-shadow] focus:ring-2 focus:ring-[var(--color-primary)]"
 
@@ -318,9 +321,21 @@ export function LeadForm() {
   }
 
   const requiredStar = <span className="text-red-600">*</span>
+  const leadPhone = assetMode === "vozidlo" ? LEAD_PHONE_VOZIDLO : LEAD_PHONE_NEMOVITOST
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="mx-auto w-full space-y-6">
+    <>
+      <h2 className="text-center font-[family-name:var(--font-cardo)] text-2xl font-semibold leading-tight text-[var(--color-foreground)] md:text-3xl">
+        Nezávazná poptávka
+      </h2>
+      <p className="mt-3 text-center text-body-muted">
+        Vyplňte údaje a ozveme se vám co nejdříve. Nebo volejte{" "}
+        <a href={leadPhone.href} className="font-semibold text-[var(--color-primary)]">
+          {leadPhone.label}
+        </a>
+        .
+      </p>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="mx-auto mt-8 w-full space-y-6">
       <div className="space-y-2">
         <p className="text-body font-medium text-[var(--color-muted)]">Typ poptávky</p>
         <div className="grid grid-cols-2 gap-2 sm:gap-3">
@@ -724,5 +739,6 @@ export function LeadForm() {
         <span>Vaše data jsou v bezpečí. Diskrétně. Odpovídáme obratem.</span>
       </div>
     </form>
+    </>
   )
 }
