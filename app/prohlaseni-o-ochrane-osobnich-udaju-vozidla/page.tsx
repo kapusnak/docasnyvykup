@@ -20,6 +20,7 @@ export default function ProhlaseniOchranaVozidlaPage() {
             <h1 className="text-center font-[family-name:var(--font-cardo)] text-3xl font-bold leading-tight text-white md:text-4xl">
               Prohlášení o ochraně osobních údajů – vozidla
             </h1>
+            <p className="mt-3 text-center text-sm text-white/80 md:text-base">Datum účinnosti: 7. května 2026</p>
           </Container>
         </section>
 
@@ -74,8 +75,8 @@ export default function ProhlaseniOchranaVozidlaPage() {
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">4. Účely a právní základ zpracování</h2>
               <p className="mt-3 text-body-muted">
-                Vaše údaje slouží výhradně k předání poptávky smluvnímu partnerovi Provozovatele – společnosti Car Service Partner s.r.o.,
-                která zajistí vyřízení nabídky dočasného výkupu vozidla.
+                Vaše údaje slouží k předání a vyřízení poptávky prostřednictvím smluvních partnerů Provozovatele, kteří se podílejí na
+                posouzení poptávky a přípravě nabídky dočasného výkupu vozidla.
               </p>
               <p className="mt-3 text-body-muted">Vaše osobní údaje zpracováváme na základě:</p>
               <ul className="mt-3 list-disc space-y-1.5 pl-6 text-body-muted">
@@ -91,25 +92,18 @@ export default function ProhlaseniOchranaVozidlaPage() {
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">5. Předání osobních údajů třetím stranám</h2>
               <p className="mt-3 text-body-muted">
-                Zadané údaje jsou předány výhradně smluvnímu partnerovi Provozovatele:
-              </p>
-              <p className="mt-3 font-semibold text-[var(--color-foreground)]">Car Service Partner s.r.o.</p>
-              <ul className="mt-2 list-none space-y-1 text-body-muted">
-                <li>Sídlo: Na Poříčí 1071/17, Nové Město, 110 00 Praha 1</li>
-                <li>IČ: 06143911</li>
-                <li>
-                  E-mail:{" "}
-                  <a href="mailto:info@cash4car.cz" className="text-[var(--color-primary)] underline-offset-2 hover:underline">
-                    info@cash4car.cz
-                  </a>
-                </li>
-              </ul>
-              <p className="mt-3 text-body-muted">
-                Car Service Partner s.r.o. je naším důvěryhodným obchodním partnerem, který se řídí vlastními zásadami ochrany osobních
-                údajů.
+                Pro účely posouzení poptávky, přípravy nabídky a zprostředkování služby dočasného výkupu vozidla můžeme vaše osobní údaje
+                předat{" "}
+                <strong className="text-[var(--color-foreground)]">smluvním partnerům</strong> (příjemcům údajů), se kterými spolupracujeme.
+                Jedná se zejména o podnikatele působící v oblasti služeb souvisejících s vozidly a dočasným výkupem (např. posouzení
+                vozidla, příprava nabídky, komunikace ohledně nabídky). Konkrétní identitu příjemce vám v případě předání údajů obvykle
+                sdělíme v rámci komunikace ohledně vaší poptávky; na vyžádání vám ji sdělíme i předem.
               </p>
               <p className="mt-3 text-body-muted">
-                Údaje nejsou dále poskytovány třetím osobám, s výjimkou případů, kdy to ukládá zákon.
+                Kromě výše uvedeného mohou být údaje předány také poskytovatelům technických a provozních služeb (typicky zpracovatelé),
+                kteří pro nás zajišťují např. hosting či provoz webových nástrojů v rozsahu nutném pro výkon smlouvy nebo náš oprávněný
+                zájem; podrobnosti o některých nástrojích obsahuje část o cookies níže. Údaje dále předáváme jen tehdy, když nám to ukládá
+                zákon nebo rozhodnutí veřejné moci.
               </p>
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">6. Doba uchování údajů</h2>
