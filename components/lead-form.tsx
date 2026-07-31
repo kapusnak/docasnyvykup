@@ -48,6 +48,7 @@ const leadFormSchema = z
     name: z.string(),
     email: z.string(),
     phoneDigits: z.string(),
+    propertyAddress: z.string(),
     serviceType: serviceTypeEnum,
     amountCzk: z.number(),
     firstName: z.string(),
@@ -75,6 +76,13 @@ const leadFormSchema = z
     if (data.assetMode === "nemovitosti") {
       if (data.name.trim().length < 2) {
         ctx.addIssue({ code: "custom", message: "Zadejte jméno.", path: ["name"] })
+      }
+      if (data.propertyAddress.trim().length < 5) {
+        ctx.addIssue({
+          code: "custom",
+          message: "Zadejte adresu nemovitosti (ulice, č.p., město).",
+          path: ["propertyAddress"],
+        })
       }
       if (data.amountCzk < REAL_ESTATE_RANGE.min || data.amountCzk > REAL_ESTATE_RANGE.max) {
         ctx.addIssue({ code: "custom", message: "Neplatná částka.", path: ["amountCzk"] })
@@ -138,6 +146,7 @@ function emptyVozidloFields() {
 function emptyNemovitostiFields() {
   return {
     name: "",
+    propertyAddress: "",
     serviceType: "zpetny-leasing" as LeadFormValues["serviceType"],
     amountCzk: snapToRealEstateValue(DEFAULT_REAL_ESTATE_AMOUNT),
   }
@@ -254,12 +263,14 @@ export function LeadForm() {
       let amount: number
       let assetType: string
       let serviceType: string
+      let propertyAddress: string | undefined
       if (values.assetMode === "nemovitosti") {
         name = values.name.trim()
         amount = snapToRealEstateValue(values.amountCzk)
         assetType = "Nemovitost"
         serviceType =
           realEstateServices.find((s) => s.value === values.serviceType)?.label ?? values.serviceType
+        propertyAddress = values.propertyAddress.trim()
       } else {
         name = `${values.firstName.trim()} ${values.lastName.trim()}`.trim()
         amount = snapToCarValue(values.vehicleAmountCzk)
@@ -278,6 +289,7 @@ export function LeadForm() {
         amount,
         assetType,
         serviceType,
+        ...(propertyAddress ? { propertyAddress } : {}),
       })
       setStatus("success")
       toast.success("Děkujeme za poptávku", {
@@ -484,6 +496,24 @@ export function LeadForm() {
                 <p className="mt-1 text-sm text-red-600">{form.formState.errors.phoneDigits.message}</p>
               )}
             </div>
+          </div>
+          <div>
+            <label
+              htmlFor="lead-property-address"
+              className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]"
+            >
+              Adresa nemovitosti {requiredStar}
+            </label>
+            <input
+              id="lead-property-address"
+              autoComplete="street-address"
+              placeholder="Ulice a č.p., město"
+              className={cn(inputClass, "placeholder:text-[var(--color-muted)]")}
+              {...form.register("propertyAddress")}
+            />
+            {form.formState.errors.propertyAddress && (
+              <p className="mt-1 text-sm text-red-600">{form.formState.errors.propertyAddress.message}</p>
+            )}
           </div>
           <div>
             <label htmlFor="lead-email-nem" className="mb-1.5 block text-body font-medium text-[var(--color-foreground)]">

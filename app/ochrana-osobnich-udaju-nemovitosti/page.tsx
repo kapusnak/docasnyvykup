@@ -48,6 +48,7 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
                 <li>Jméno a příjmení</li>
                 <li>E-mailová adresa</li>
                 <li>Telefonní číslo</li>
+                <li>Adresa nemovitosti</li>
                 <li>Typ nemovitosti</li>
               </ul>
 
