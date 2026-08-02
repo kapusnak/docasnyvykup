@@ -14,6 +14,8 @@ npm start
 
 `npm start` = `next start -p ${PORT:-3000}` (Railway nastaví `PORT`).
 
+Next.js 16 vyžaduje **Node ≥ 20.9**. V repu je `.nvmrc` / `nixpacks.toml` / `engines.node`, aby Nixpacks nepoužil výchozí Node 18.
+
 ## 2. Proměnné prostředí (Railway Variables)
 
 Nastavte hodnoty podle `.env.example`:
