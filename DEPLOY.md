@@ -27,7 +27,7 @@ Nastavte hodnoty podle `.env.example`:
 - `SMTP_USER` — plná e-mailová adresa schránky
 - `SMTP_PASS` — heslo schránky
 - `LEAD_NOTIFY_TO` — kam chodí notifikace o poptávkách
-- volitelně `MAIL_FROM`
+- volitelně `MAIL_FROM` (např. `docasnyvykup.cz <lead@docasnyvykup.cz>` — bez ní se jako jméno odesílatele použije doména)
 
 **Veřejné (klient):**
 
