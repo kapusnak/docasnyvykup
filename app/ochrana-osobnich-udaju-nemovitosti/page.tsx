@@ -50,6 +50,10 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
                 <li>Telefonní číslo</li>
                 <li>Adresa nemovitosti</li>
                 <li>Typ nemovitosti</li>
+                <li>
+                  IP adresa (technický údaj při odeslání formuláře – bezpečnost a prevence zneužití, na základě oprávněného
+                  zájmu dle čl. 6 odst. 1 písm. f) GDPR)
+                </li>
               </ul>
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">3. Jak vaše údaje získáváme</h2>

@@ -1,26 +1,50 @@
-# Nasazení na Wedos (statický export)
+# Nasazení na Railway (Next.js server)
 
-1. **Build**
+Web běží jako Node.js aplikace (`next start`), ne jako statický export.
 
-   ```bash
-   npm install
-   npm run build
-   ```
+## 1. Build a start
 
-   Výstup je složka **`out/`** s čistým HTML/CSS/JS (bez Node serveru).
+Railway (Nixpacks) obvykle spustí:
 
-2. **Proměnné prostředí**
+```bash
+npm install
+npm run build
+npm start
+```
 
-   Před buildem nastavte v prostředí nebo v `.env.local` hodnoty z `.env.example` (EmailJS, `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_GTM_ID` pro Google Tag Manager). Hodnoty `NEXT_PUBLIC_*` se vkládají do klienta už při buildu.
+`npm start` = `next start -p ${PORT:-3000}` (Railway nastaví `PORT`).
 
-3. **Nahrání na hosting**
+## 2. Proměnné prostředí (Railway Variables)
 
-   Obsah složky `out/` nahrajte do `public_html` (nebo do podsložky, pokud web běží v podadresáři – pak by bylo potřeba v Next zvážit `basePath`).
+Nastavte hodnoty podle `.env.example`:
 
-4. **HTTPS a doména**
+**Server (SMTP / Spacemail)** — nutné pro formuláře:
 
-   Ověřte, že kanonická adresa odpovídá `NEXT_PUBLIC_SITE_URL` (Open Graph a sitemap).
+- `SMTP_HOST` — např. `mail.spacemail.com`
+- `SMTP_PORT` — `465` (SSL) nebo `587` (STARTTLS)
+- `SMTP_USER` — plná e-mailová adresa schránky
+- `SMTP_PASS` — heslo schránky
+- `LEAD_NOTIFY_TO` — kam chodí notifikace o poptávkách
+- volitelně `MAIL_FROM`
 
-5. **Kontrola**
+**Veřejné (klient):**
 
-   Otestujte formulář a popup (EmailJS), mobilní menu a právní stránky.
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_GTM_ID`
+- volitelně GA4 / Google Ads proměnné
+
+`NEXT_PUBLIC_*` musí být dostupné i při **buildu**.
+
+## 3. Doména
+
+V Railway přidejte custom domain. U DNS poskytovatele (např. Vedos):
+
+- kořen: **ALIAS** na `….up.railway.app` (ne CNAME — Vedos CNAME na `@` nepovolí)
+- `TXT` `_railway-verify` dle Railway
+- volitelně `www` jako CNAME
+
+## 4. Kontrola
+
+- Otevřete web na vlastní doméně
+- Odešlete popup (telefon) a lead formulář — notifikace musí dorazit na `LEAD_NOTIFY_TO` včetně **IP adresy**
+- Při vyplněném e-mailu klienta přijde i potvrzovací zpráva
