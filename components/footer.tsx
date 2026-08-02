@@ -132,7 +132,7 @@ export function Footer() {
             </div>
             <div className="mt-8">
               <a
-                href="https://www.zivefirmy.cz/"
+                href="https://www.zivefirmy.cz/docasny-vykup_f1907400?loc=1"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="ZIVEFIRMY.CZ — Spolehlivá firma 2026"
