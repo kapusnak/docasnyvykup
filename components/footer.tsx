@@ -83,6 +83,9 @@ export function Footer() {
                 </a>
               </p>
             </div>
+            <div className="pt-1">
+              <WhatsAppQrOpenButton variant="card" />
+            </div>
             <p className={bodySm}>
               <span className={muted}>E-mail: </span>
               <a href="mailto:info@docasnyvykup.cz" className={linkSubtle}>
@@ -90,10 +93,6 @@ export function Footer() {
               </a>
             </p>
             <div className="flex flex-wrap gap-2 pt-0.5">
-              <WhatsAppQrOpenButton
-                buttonClassName={`${socialBtn} bg-[#25D366]`}
-                iconClassName="h-4 w-4"
-              />
               <a
                 href={SOCIAL.instagram}
                 target="_blank"
