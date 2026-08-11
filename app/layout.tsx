@@ -5,6 +5,7 @@ import { AppToaster } from "@/components/app-toaster"
 import { GoogleAdsGtag } from "@/components/google-ads-gtag"
 import { GoogleAnalytics } from "@/components/google-analytics"
 import { GoogleTagManager } from "@/components/google-tag-manager"
+import { SeznamSklikRetargeting } from "@/components/seznam-sklik-retargeting"
 
 import "./globals.css"
 
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="min-h-screen font-sans">
         <GoogleTagManager />
         <GoogleAdsGtag />
+        <SeznamSklikRetargeting />
         {children}
         <GoogleAnalytics />
         <AppToaster />
