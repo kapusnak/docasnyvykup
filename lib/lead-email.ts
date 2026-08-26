@@ -13,16 +13,26 @@ export type LeadPayload = {
 }
 
 /** Brand + contact used in operator/client e-mails for this site. */
+const PHONE_NEMOVITOST = { tel: "+420776722175", display: "+420 776 722 175" } as const
+const PHONE_VOZIDLO = { tel: "+420777400256", display: "+420 777 400 256" } as const
+
 const SITE = {
   domain: "docasnyvykup.cz",
   brandName: "Dočasný výkup",
   contactEmail: "info@docasnyvykup.cz",
   signOff: "Váš tým Dočasný výkup s.r.o.",
-  phones: [
-    { tel: "+420776722175", display: "+420 776 722 175" },
-    { tel: "+420777400256", display: "+420 777 400 256" },
-  ],
+  phones: [PHONE_NEMOVITOST, PHONE_VOZIDLO],
 } as const
+
+type SitePhone = (typeof SITE.phones)[number]
+
+/** Same split as the public footer: nemovitosti → 175, vozidla → 256. */
+function clientContactPhones(assetType?: string): readonly SitePhone[] {
+  const t = (assetType ?? "").trim().toLowerCase()
+  if (t === "automobil" || t.includes("vozid")) return [PHONE_VOZIDLO]
+  if (t === "nemovitost" || t.includes("nemovit")) return [PHONE_NEMOVITOST]
+  return SITE.phones
+}
 
 const CALLBACK_ONLY_SERVICE = "Není relevantní (Callback)"
 const CALLBACK_ONLY_AMOUNT = "--- Pouze požadavek na zavolání ---"
@@ -194,8 +204,9 @@ function buildClientHtml(fields: {
   propertyType: string
   serviceType: string
   amount: string
+  phones: readonly SitePhone[]
 }): string {
-  const phoneLines = SITE.phones
+  const phoneLines = fields.phones
     .map(
       (p) =>
         `<a style="color: #1a5a9c; text-decoration: none;" href="tel:${escapeHtml(p.tel)}">${escapeHtml(p.display)}</a>`,
@@ -310,7 +321,8 @@ export function buildLeadEmails(params: LeadPayload & { ip: string }): BuiltLead
 
   const clientNameForBody = callback ? PLACEHOLDER : name
   const clientSubject = `Potvrzení přijetí poptávky – ${SITE.brandName}`
-  const phonesText = SITE.phones.map((p) => p.display).join(" / ")
+  const clientPhones = clientContactPhones(params.assetType)
+  const phonesText = clientPhones.map((p) => p.display).join(" / ")
   const clientText = [
     "Dobrý den, děkujeme za Vaši poptávku!",
     "",
@@ -335,6 +347,7 @@ export function buildLeadEmails(params: LeadPayload & { ip: string }): BuiltLead
     propertyType,
     serviceType,
     amount,
+    phones: clientPhones,
   })
 
   return {
