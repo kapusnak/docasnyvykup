@@ -20,7 +20,7 @@ const SITE = {
   signOff: "Váš tým Dočasný výkup s.r.o.",
   phones: [
     { tel: "+420776722175", display: "+420 776 722 175" },
-    { tel: "+420776680720", display: "+420 776 680 720" },
+    { tel: "+420777400256", display: "+420 777 400 256" },
   ],
 } as const
 

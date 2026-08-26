@@ -6,7 +6,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
   )
 }
 
-const WA_HREF = "https://wa.me/420776722175"
+const WA_HREF = "https://wa.me/420777400256"
 
 type Props = {
   buttonClassName?: string

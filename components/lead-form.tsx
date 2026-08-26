@@ -32,7 +32,7 @@ import { toFullPhone } from "@/lib/phone-420"
 import { cn } from "@/lib/utils"
 
 const LEAD_PHONE_NEMOVITOST = { href: "tel:+420776722175", label: "+420 776 722 175" } as const
-const LEAD_PHONE_VOZIDLO = { href: "tel:+420776680720", label: "+420 776 680 720" } as const
+const LEAD_PHONE_VOZIDLO = { href: "tel:+420777400256", label: "+420 777 400 256" } as const
 
 const inputClass =
   "h-12 w-full rounded-xl border border-[#cfcabe] bg-white px-4 text-base text-[var(--color-foreground)] shadow-sm outline-none transition-[box-shadow] focus:ring-2 focus:ring-[var(--color-primary)]"

@@ -351,7 +351,7 @@ export default function HomePage() {
                         <>
                           Vyplňte online <FormularInlineLink variant="dark" leadMode="vozidlo">formulář</FormularInlineLink>{" "}
                           nebo nám{" "}
-                          <ZavolejteTelLink variant="dark" telHref="tel:+420776680720" telDisplay="+420 776 680 720">
+                          <ZavolejteTelLink variant="dark" telHref="tel:+420777400256" telDisplay="+420 777 400 256">
                             zavolejte
                           </ZavolejteTelLink>
                           .
