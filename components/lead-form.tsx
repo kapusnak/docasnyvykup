@@ -31,7 +31,7 @@ import { PhoneDigitsInput } from "@/components/phone-digits-input"
 import { toFullPhone } from "@/lib/phone-420"
 import { cn } from "@/lib/utils"
 
-const LEAD_PHONE_NEMOVITOST = { href: "tel:+420776075150", label: "+420 776 075 150" } as const
+const LEAD_PHONE_NEMOVITOST = { href: "tel:+420776722175", label: "+420 776 722 175" } as const
 const LEAD_PHONE_VOZIDLO = { href: "tel:+420776680720", label: "+420 776 680 720" } as const
 
 const inputClass =

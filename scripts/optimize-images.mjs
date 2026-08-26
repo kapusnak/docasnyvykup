@@ -50,20 +50,6 @@ async function convertFile(inputAbs) {
     return
   }
 
-  // QR: keep detail for scanning
-  if (r.includes("whatsapp-qr")) {
-    await sharp(inputAbs)
-      .resize(420, 420, {
-        fit: "inside",
-        withoutEnlargement: true,
-      })
-      .webp({ ...webpOpts, nearLossless: true })
-      .toFile(outAbs)
-    unlinkSync(inputAbs)
-    console.log(`${r} -> ${relative(publicDir, outAbs)}`)
-    return
-  }
-
   // Site logo / favicon source (512×512)
   if (r.includes("cropped-docasnyvykup-logo")) {
     await sharp(inputAbs)

@@ -19,7 +19,7 @@ const SITE = {
   contactEmail: "info@docasnyvykup.cz",
   signOff: "Váš tým Dočasný výkup s.r.o.",
   phones: [
-    { tel: "+420776075150", display: "+420 776 075 150" },
+    { tel: "+420776722175", display: "+420 776 722 175" },
     { tel: "+420776680720", display: "+420 776 680 720" },
   ],
 } as const

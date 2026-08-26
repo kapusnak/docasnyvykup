@@ -37,8 +37,8 @@ export function Footer() {
               <p className="text-sm font-semibold text-white">Dočasný výkup nemovitostí</p>
               <p className={bodySm}>
                 <span className={muted}>Telefon: </span>
-                <a href="tel:+420776075150" className={telLink}>
-                  +420 776 075 150
+                <a href="tel:+420776722175" className={telLink}>
+                  +420 776 722 175
                 </a>
               </p>
               <p className={bodySm}>
@@ -75,11 +75,6 @@ export function Footer() {
                 <span className={muted}>Telefon: </span>
                 <a href="tel:+420776680720" className={telLink}>
                   +420 776 680 720
-                </a>
-              </p>
-              <p>
-                <a href="tel:+420776075150" className={telLink}>
-                  +420 776 075 150
                 </a>
               </p>
             </div>
