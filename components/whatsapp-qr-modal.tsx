@@ -6,39 +6,50 @@ function WhatsAppIcon({ className }: { className?: string }) {
   )
 }
 
-const WA_HREF = "https://wa.me/420777400256"
+const WA_PHONE_VOZIDLO = "420777400256"
+
+const WA_SUBTITLE = "Napište nám na WhatsApp - odpovíme co nejdříve"
 
 type Props = {
   buttonClassName?: string
   iconClassName?: string
   /** `card` = rámeček s textem, `icon` = jen kulaté tlačítko. */
   variant?: "icon" | "card"
+  /** Číslo bez `+` a mezer, výchozí je WhatsApp vozidel. */
+  phone?: string
+  /** První řádek karty (např. Nemovitosti / Vozidla). */
+  title?: string
 }
 
 export function WhatsAppQrOpenButton({
   buttonClassName,
   iconClassName,
   variant = "icon",
+  phone = WA_PHONE_VOZIDLO,
+  title,
 }: Props) {
+  const href = `https://wa.me/${phone}`
+  const ariaLabel = title ? `${title}: ${WA_SUBTITLE}` : WA_SUBTITLE
+
   if (variant === "card") {
     return (
       <a
-        href={WA_HREF}
+        href={href}
         target="_blank"
         rel="noopener noreferrer"
         className={
           buttonClassName ??
           "inline-flex w-fit max-w-full items-center gap-2.5 rounded-xl border border-[#25D366]/50 bg-white/5 px-3 py-2.5 text-left transition-colors hover:border-[#25D366] hover:bg-[#25D366]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#164A41]"
         }
-        aria-label="Napište nám na WhatsApp"
+        aria-label={ariaLabel}
       >
         <WhatsAppIcon className={iconClassName ?? "h-6 w-6 shrink-0 text-[#25D366]"} />
         <span className="min-w-0">
           <span className="block text-sm font-semibold leading-snug text-white">
-            Napište nám na WhatsApp
+            {title ?? "WhatsApp"}
           </span>
           <span className="mt-0.5 block text-xs leading-snug text-white/65">
-            Rychlá zpráva — odpovíme co nejdříve
+            {WA_SUBTITLE}
           </span>
         </span>
       </a>
@@ -47,14 +58,14 @@ export function WhatsAppQrOpenButton({
 
   return (
     <a
-      href={WA_HREF}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className={
         buttonClassName ??
         "flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white shadow-sm transition hover:brightness-110"
       }
-      aria-label="Napište nám na WhatsApp"
+      aria-label={ariaLabel}
     >
       <WhatsAppIcon className={iconClassName ?? "h-5 w-5"} />
     </a>

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Facebook, Instagram } from "lucide-react"
+import { Facebook, Instagram, Mail, Phone } from "lucide-react"
 
 import { Container } from "@/components/container"
 import { SectionRule } from "@/components/section-rule"
@@ -20,9 +20,17 @@ export function Footer() {
   const telLink =
     "font-medium text-white no-underline transition-colors hover:text-white hover:underline hover:decoration-white/40 hover:underline-offset-2"
   const bodySm = "text-sm leading-normal text-white"
+  const contactRow = `${bodySm} flex items-center gap-2`
+  const contactIcon = `h-4 w-4 shrink-0 ${muted}`
 
   const socialBtn =
     "flex h-9 w-9 items-center justify-center rounded-full text-white shadow-sm transition hover:brightness-105"
+  const overline = "text-[10px] font-medium uppercase tracking-wide text-white/55"
+  const card =
+    "min-w-0 rounded-xl border border-white/15 bg-white/[0.06] px-4 py-4 md:px-5 md:py-5"
+  const cardTitle =
+    "font-[family-name:var(--font-cardo)] text-base font-semibold leading-snug tracking-tight text-white md:text-lg"
+  const billingBlock = `mt-6 space-y-0.5 border-t border-white/15 pt-4 text-xs leading-snug ${muted}`
 
   return (
     <footer id="kontakty" className="bg-[#164A41] text-white">
@@ -30,59 +38,63 @@ export function Footer() {
         <h2 className="mb-6 font-[family-name:var(--font-cardo)] text-xl font-semibold leading-tight tracking-tight text-white md:text-2xl lg:mb-8">
           Kontakty
         </h2>
-        <div className="grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 min-[480px]:gap-8 lg:gap-10 lg:items-start">
+        <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 min-[480px]:gap-5 lg:gap-6 lg:items-start">
           {/* Nemovitosti */}
-          <div className="min-w-0">
-            <div className="space-y-2">
-              <p className="text-sm font-semibold text-white">Dočasný výkup nemovitostí</p>
-              <p className={bodySm}>
-                <span className={muted}>Telefon: </span>
-                <a href="tel:+420776722175" className={telLink}>
-                  +420 776 722 175
-                </a>
-              </p>
-              <p className={bodySm}>
-                <span className={muted}>E-mail: </span>
-                <a href="mailto:info@docasnyvykup.cz" className={linkSubtle}>
-                  info@docasnyvykup.cz
-                </a>
-              </p>
-              <ul className={`${bodySm} space-y-0.5`}>
-                <li>
-                  <Link href="/ochrana-osobnich-udaju-nemovitosti" className={linkSubtle}>
-                    Ochrana osobních údajů
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/zasady-cookies" className={linkSubtle}>
-                    Zásady cookies
-                  </Link>
-                </li>
-              </ul>
-              <div className={`mt-6 space-y-0.5 text-xs leading-snug ${muted}`}>
-                <p className="font-medium text-white/95">Dočasný výkup s.r.o.</p>
-                <p>IČ: 23626836</p>
-                <p>Adresa: Podvesná VII/6192, 760 01 Zlín</p>
-              </div>
+          <section className={`${card} space-y-2`} aria-labelledby="footer-nemovitosti">
+            <h3 id="footer-nemovitosti" className={cardTitle}>
+              Dočasný výkup nemovitostí
+            </h3>
+            <p className={contactRow}>
+              <Phone className={contactIcon} aria-hidden />
+              <a href="tel:+420776722175" className={telLink}>
+                +420 776 722 175
+              </a>
+            </p>
+            <div className="pt-1">
+              <WhatsAppQrOpenButton variant="card" phone="420776722175" title="Nemovitosti" />
             </div>
-          </div>
+            <p className={contactRow}>
+              <Mail className={contactIcon} aria-hidden />
+              <a href="mailto:info@docasnyvykup.cz" className={linkSubtle}>
+                info@docasnyvykup.cz
+              </a>
+            </p>
+            <ul className={`${bodySm} space-y-0.5`}>
+              <li>
+                <Link href="/ochrana-osobnich-udaju-nemovitosti" className={linkSubtle}>
+                  Ochrana osobních údajů
+                </Link>
+              </li>
+              <li>
+                <Link href="/zasady-cookies" className={linkSubtle}>
+                  Zásady cookies
+                </Link>
+              </li>
+            </ul>
+            <div className={billingBlock}>
+              <p className={overline}>Fakturační údaje</p>
+              <p className="font-medium text-white/95">Dočasný výkup s.r.o.</p>
+              <p>IČ: 23626836</p>
+              <p>Adresa: Podvesná VII/6192, 760 01 Zlín</p>
+            </div>
+          </section>
 
           {/* Vozidla */}
-          <div className="min-w-0 space-y-2">
-            <p className="text-sm font-semibold text-white">Dočasný výkup vozidel</p>
-            <div className={`${bodySm} space-y-0.5`}>
-              <p>
-                <span className={muted}>Telefon: </span>
-                <a href="tel:+420777400256" className={telLink}>
-                  +420 777 400 256
-                </a>
-              </p>
-            </div>
+          <section className={`${card} space-y-2`} aria-labelledby="footer-vozidla">
+            <h3 id="footer-vozidla" className={cardTitle}>
+              Dočasný výkup vozidel
+            </h3>
+            <p className={contactRow}>
+              <Phone className={contactIcon} aria-hidden />
+              <a href="tel:+420777400256" className={telLink}>
+                +420 777 400 256
+              </a>
+            </p>
             <div className="pt-1">
-              <WhatsAppQrOpenButton variant="card" />
+              <WhatsAppQrOpenButton variant="card" phone="420777400256" title="Vozidla" />
             </div>
-            <p className={bodySm}>
-              <span className={muted}>E-mail: </span>
+            <p className={contactRow}>
+              <Mail className={contactIcon} aria-hidden />
               <a href="mailto:info@docasnyvykup.cz" className={linkSubtle}>
                 info@docasnyvykup.cz
               </a>
@@ -119,12 +131,13 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-            <div className={`mt-6 space-y-0.5 text-xs leading-snug ${muted}`}>
+            <div className={billingBlock}>
+              <p className={overline}>Fakturační údaje</p>
               <p className="font-medium text-white/95">Tým Dočasný výkup</p>
               <p>IČ: 67020283</p>
               <p>Adresa: Podvesná VII/2046, 760 01 Zlín</p>
             </div>
-            <div className="mt-8">
+            <div className="pt-2">
               <a
                 href="https://www.zivefirmy.cz/docasny-vykup_f1907400?loc=1"
                 target="_blank"
@@ -147,7 +160,7 @@ export function Footer() {
                 </span>
               </a>
             </div>
-          </div>
+          </section>
         </div>
 
         <div className={`mt-8 space-y-1.5 pt-5 text-center text-xs leading-normal ${muted}`}>
