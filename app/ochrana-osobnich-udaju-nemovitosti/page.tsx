@@ -21,7 +21,7 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
             <h1 className="text-center font-[family-name:var(--font-cardo)] text-3xl font-bold leading-tight text-white md:text-4xl">
               Prohlášení o ochraně osobních údajů – nemovitosti
             </h1>
-            <p className="mt-3 text-center text-sm text-white/80 md:text-base">Datum účinnosti: 7. května 2026</p>
+            <p className="mt-3 text-center text-sm text-white/80 md:text-base">Datum účinnosti: 8. 10. 2026</p>
           </Container>
         </section>
 
@@ -55,29 +55,27 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
                   zájmu dle čl. 6 odst. 1 písm. f) GDPR)
                 </li>
               </ul>
+              <p className="mt-3 text-body-muted">
+                Pro zaslání nabídky našich služeb poštou můžeme dále zpracovávat základní identifikační a adresní údaje z veřejně
+                dostupných zdrojů a veřejných evidencí, zejména jméno, příjmení, adresu a základní veřejně dostupné údaje vztahující se k
+                nemovitosti.
+              </p>
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">3. Jak vaše údaje získáváme</h2>
-              <p className="mt-3 text-body-muted">Vaše osobní údaje získáváme:</p>
-              <ul className="mt-3 list-disc space-y-1.5 pl-6 text-body-muted">
-                <li>
-                  prostřednictvím webového formuláře na adrese{" "}
-                  <a
-                    href="https://docasnyvykup.cz"
-                    className="text-[var(--color-primary)] underline-offset-2 hover:underline"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    www.docasnyvykup.cz
-                  </a>
-                </li>
-              </ul>
               <p className="mt-3 text-body-muted">
-                Poskytnutí údajů je zcela dobrovolné, ale nezbytné pro poskytnutí našich služeb.
+                Osobní údaje získáváme přímo od Vás prostřednictvím webových formulářů, telefonické či e-mailové komunikace a dále z
+                veřejně dostupných zdrojů a veřejných evidencí, zejména z katastru nemovitostí, ARES, veřejných rejstříků, živnostenského
+                rejstříku, insolvenčního rejstříku a dalších zákonně zveřejňovaných zdrojů.
+              </p>
+              <p className="mt-3 text-body-muted">
+                Poskytnutí údajů přímo Vámi je zcela dobrovolné, ale nezbytné pro poskytnutí našich služeb.
               </p>
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">4. Účely a právní základ zpracování</h2>
               <p className="mt-3 text-body-muted">
-                Vaše údaje slouží k posouzení a vyřízení poptávky na službu dočasného výkupu nemovitosti a ke komunikaci s vámi.
+                Vaše údaje slouží k posouzení a vyřízení poptávky na službu dočasného výkupu nemovitosti a ke komunikaci s vámi. Základní
+                údaje z veřejně dostupných zdrojů můžeme v případech, kdy jsou splněny zákonné podmínky, zpracovávat také za účelem
+                zaslání nabídky našich služeb poštou.
               </p>
               <p className="mt-3 text-body-muted">Vaše osobní údaje zpracováváme na základě:</p>
               <ul className="mt-3 list-disc space-y-1.5 pl-6 text-body-muted">
@@ -87,9 +85,37 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
                 </li>
                 <li>
                   <strong className="text-[var(--color-foreground)]">čl. 6 odst. 1 písm. f) GDPR</strong> – oprávněný zájem Provozovatele na
-                  komunikaci se zákazníkem a zajištění provozu služeb.
+                  komunikaci se zákazníkem a zajištění provozu služeb,
+                </li>
+                <li>
+                  <strong className="text-[var(--color-foreground)]">čl. 6 odst. 1 písm. f) GDPR</strong> – oprávněný zájem správce na
+                  přímém marketingu (zaslání nabídky služeb poštou).
                 </li>
               </ul>
+
+              <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">Poštovní nabídky a veřejně dostupné zdroje</h2>
+              <p className="mt-3 text-body-muted">
+                Základní identifikační a adresní údaje získané z veřejně dostupných zdrojů a veřejných evidencí můžeme v případech, kdy
+                jsou splněny zákonné podmínky, zpracovávat také za účelem zaslání nabídky našich služeb poštou. Jedná se zejména o jméno,
+                příjmení, adresu a základní veřejně dostupné údaje vztahující se k nemovitosti. Právním základem zpracování je oprávněný
+                zájem správce na přímém marketingu dle čl. 6 odst. 1 písm. f) GDPR.
+              </p>
+              <aside className="mt-4 rounded-2xl border-2 border-[var(--color-primary)] bg-[var(--color-surface-cream)] px-5 py-4 shadow-sm">
+                <p className="font-bold leading-snug text-[var(--color-foreground)]">
+                  Máte právo kdykoliv a bezplatně vznést námitku proti zpracování osobních údajů pro účely přímého marketingu. Po uplatnění
+                  námitky nebudou Vaše osobní údaje pro tento účel dále zpracovávány.
+                </p>
+                <p className="mt-3 font-semibold leading-snug text-[var(--color-foreground)]">
+                  Námitku můžete uplatnit e-mailem na{" "}
+                  <a
+                    href="mailto:info@docasnyvykup.cz"
+                    className="text-[var(--color-primary)] underline underline-offset-2"
+                  >
+                    info@docasnyvykup.cz
+                  </a>{" "}
+                  nebo dopisem na adresu správce.
+                </p>
+              </aside>
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">5. Předání osobních údajů třetím stranám</h2>
               <p className="mt-3 text-body-muted">
