@@ -21,7 +21,7 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
             <h1 className="text-center font-[family-name:var(--font-cardo)] text-3xl font-bold leading-tight text-white md:text-4xl">
               Prohlášení o ochraně osobních údajů – nemovitosti
             </h1>
-            <p className="mt-3 text-center text-sm text-white/80 md:text-base">Datum účinnosti: 8. 10. 2026</p>
+            <p className="mt-3 text-center text-sm text-white/80 md:text-base">Datum účinnosti: 21. 10. 2026</p>
           </Container>
         </section>
 
@@ -119,7 +119,25 @@ export default function OchranaOsobnichUdajuNemovitostiPage() {
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">5. Předání osobních údajů třetím stranám</h2>
               <p className="mt-3 text-body-muted">
-                Údaje nejsou dále poskytovány třetím osobám, s výjimkou případů, kdy to ukládá zákon.
+                Údaje nepředáváme třetím osobám za účelem jejich vlastního využití, s výjimkou případů, kdy to ukládá zákon.
+              </p>
+              <p className="mt-3 text-body-muted">Osobní údaje však mohou být zpřístupněny těmto kategoriím příjemců:</p>
+              <ul className="mt-3 list-disc space-y-1.5 pl-6 text-body-muted">
+                <li>
+                  poskytovatelům poštovních a doručovacích služeb, zejména Česká pošta, s.p., v rozsahu jméno, příjmení a adresa,
+                  výhradně za účelem doručení zásilek s nabídkou našich služeb (viz oddíl „Poštovní nabídky a veřejně dostupné zdroje“),
+                </li>
+                <li>
+                  poskytovatelům hostingu, provozu webu a e-mailových služeb, kteří pro nás údaje zpracovávají jako zpracovatelé na
+                  základě smlouvy a podle našich pokynů,
+                </li>
+                <li>
+                  poskytovatelům analytických a reklamních nástrojů v rozsahu uvedeném na této stránce a v Zásadách cookies.
+                </li>
+              </ul>
+              <p className="mt-3 text-body-muted">
+                Osobní údaje nepředáváme do třetích zemí mimo EU/EHP, s výjimkou případů, kdy je předání zajištěno v souladu s kapitolou
+                V GDPR.
               </p>
 
               <h2 className="mt-8 text-xl font-bold leading-tight md:text-2xl">6. Doba uchování údajů</h2>
